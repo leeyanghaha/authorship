@@ -32,7 +32,7 @@ if data_type == ku.review:
     users = userhelper.sample_user(users, max_user_num)
     reviews = dataloader.load_users_data(users)
 else:
-    dataloader = du.TwitterDataLoader(data_type, num_reviews_per_num=num_reviews_per_user)
+    dataloader = du.TwitterDataLoader(data_type, num_reviews_per_user=num_reviews_per_user)
     users = dataloader.get_users(max_user_num)
     reviews = dataloader.load_users_data(users)
 

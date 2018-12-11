@@ -5,12 +5,18 @@ reviewer_name = 'reviewerName'
 reviewer_ID = 'reviewerID'
 reviewer_count = 'reviewerCount'
 review_text = 'reviewText'
+asin = 'asin'
 
 
 # twitter field
 twitter_id_str = 'id_str'
 twitter_text = 'text'
 twitter_user = 'user'
+retweet = 'retweeted'
+entities = 'entities'
+media = 'media'
+media_id_str = 'id_str'
+image = 'image'
 
 
 # review domain field
@@ -31,6 +37,9 @@ root = '/home/yangl/research/authorship/'
 user_root = os.path.join(root, 'data/user')
 voca_root = os.path.join(root, 'model/vocabulary')
 twitter_data_root = os.path.join(root, 'data/twitter/')
+twitter_data_all = os.path.join(twitter_data_root, 'all')
+twitter_process = os.path.join(twitter_data_root, 'process')
+photo_dir = os.path.join(root, 'data/twitter/photo')
 
 
 #model filed

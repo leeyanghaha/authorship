@@ -58,8 +58,9 @@ class PatternHolder:
         return text
 
 
-tw_rule_list = [(r'RT\s@?.*?:(\s|$)', ' '), (r'@\w+', ' '), (r'(#.+?)(\s|$)', ' \\1 '),
-                (r'https?:\W*/.*?(\s|$)|https?:(\s|$)', ' '), ]
+tw_rule_list = [(r'RT\s@?.*?:(\s|$)', 'REF'), (r'@\w+', 'REF'), (r'(#.+?)(\s|$)', ' \\1 '),
+                (r'https?:\W*/.*?(\s|$)|https?:(\s|$)', 'URL'), ]
+number_list = [(r'\d+', 'NUM')]
 special_char_list = [('&amp;', '&'), ('&lt;', '<'), ('&gt;', '>'),
                      ('&ndash;', ' '), ('&mdash;', ' '), ('[’‘]', '\''), ]
 puctuation_list = [(r'[~`$^()\-_=\+\[\]{}"|:;]', ' '), ]
@@ -72,6 +73,7 @@ contraction_list = [(r'won\'t', 'will not'), (r'can\'t', 'cannot'), (r'i\'m', 'i
                     (r'(\w+)\'ve', '\g<1> have'), (r'(\w+)\'re', '\g<1> are'), ]
 
 tw_rule_patterns = PatternHolder(tw_rule_list)
+number_patterns = PatternHolder(number_list)
 special_patterns = PatternHolder(special_char_list)
 word_patterns = PatternHolder(word_rule_list)
 contraction_patterns = PatternHolder(contraction_list)
@@ -141,16 +143,19 @@ def has_enough_alpha(text, threshold):
 
 
 def text_normalization(text):
-    pattern_list = [special_patterns, nonascii_pattern, endline_pattern, brkline_pattern,
-                    tw_rule_patterns, contraction_patterns, dupspace_pattern, ]
+    # pattern_list = [special_patterns, nonascii_pattern, endline_pattern, brkline_pattern,
+    #                 tw_rule_patterns, contraction_patterns, dupspace_pattern, ]
+    pattern_list = [nonascii_pattern, tw_rule_patterns, number_patterns,
+                    endline_pattern, brkline_pattern]
     for pattern in pattern_list:
         text = pattern.apply_patterns(text)
     return text
 
 
 def temporal_text_normalization(text):
-    pattern_list = [nonascii_pattern, endline_pattern, brkline_pattern,
-                    tw_rule_patterns, contraction_patterns, dupspace_pattern, ]
+    # pattern_list = [nonascii_pattern, endline_pattern, brkline_pattern,
+    #                 tw_rule_patterns, contraction_patterns, dupspace_pattern, ]
+    pattern_list = [nonascii_pattern, tw_rule_patterns]
     for pattern in pattern_list:
         text = pattern.apply_patterns(text)
     return text

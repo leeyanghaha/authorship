@@ -7,7 +7,7 @@ from models.svm_classifier import Svm
 
 
 max_user_num = 50
-num_reviews_per_user = 200
+num_reviews_per_user = 100
 min_threshold = 200
 data_type = ku.twitter
 
@@ -23,13 +23,13 @@ if data_type == ku.review:
     users = userhelper.get_users(reviews, max_user_num)
     reviews = dataloader.load_users_data(users)
 else:
-    dataloader = du.TwitterDataLoader(data_type, num_reviews_per_num=num_reviews_per_user)
+    dataloader = du.TwitterDataLoader(data_type, num_reviews_per_user=num_reviews_per_user)
     users = dataloader.get_users(max_user_num)
     reviews = dataloader.load_users_data(users)
 
 
 user2idx = userhelper.user2idx(users)
-ngram2idx = voca.character_n_gram_table(reviews, min_threshold=15)
+ngram2idx = voca.character_n_gram_table(reviews, min_threshold=2)
 voca.dump_n_grams(ngram2idx, type=ku.charngram2idx)
 
 
@@ -38,8 +38,8 @@ print('len ngram: ', len(ngram2idx))
 print('len reviews: ', len(reviews))
 
 
-parameters = {'penalty': 'l2', 'loss': 'squared_hinge', 'dual': True, 'multi_class': 'ovr',
-                  'fit_intercept': True, 'max_iter': 2000}
+parameters = {'penalty': 'l2', 'loss': 'hinge', 'dual': True, 'multi_class': 'ovr',
+                  'fit_intercept': True, 'max_iter': 1000}
 
 
 epoch = 10

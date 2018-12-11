@@ -68,6 +68,13 @@ def get_suffix(file):
     return os.path.split(file)[1]
 
 
+def get_suffix_list(files):
+    res = []
+    for file in files:
+        res.append(os.path.splitext(get_suffix(file))[0])
+    return res
+
+
 def get_stopwords():
     path = os.path.join(ku.root, 'code/utils/stopwords.txt')
     return load_file(path)

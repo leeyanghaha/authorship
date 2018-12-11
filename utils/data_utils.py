@@ -8,6 +8,7 @@ from scipy import sparse
 import numpy as np
 import spacy
 import os
+import utils.photo_utils as phu
 import json
 
 
@@ -56,6 +57,7 @@ class UserHelper:
         return fu.load_array(path)[0]
 
 
+
 class DataHelper:
     def __init__(self, data_type):
         self.data_type = data_type
@@ -69,6 +71,13 @@ class DataHelper:
         for item in data:
             text.append(item[key])
         return text
+
+    def get_products(self, reviews):
+        asin = []
+        for review in reviews:
+            asin.append(review[ku.asin])
+        return asin
+
 
     def _get_max_character_n_gram_len(self, *reviews):
         ngram = Ngram()
@@ -87,7 +96,7 @@ class DataHelper:
             len_list.extend(res)
         return max(len_list)
 
-    def text2ngramid(self, text, ngram2idx):
+    def text2ngramid(self, text, ngram2idx, padding=False, max_len=None):
         ngram = Ngram()
         ngram_list = ngram.character_level(text)
         text_id = []
@@ -96,6 +105,9 @@ class DataHelper:
                 text_id.append(ngram2idx[gram])
             else:
                 text_id.append(ngram2idx[ku.UNK])
+        if padding:
+            assert max_len is not None
+            text_id = self.padding(text_id, max_len)
         return text_id
 
     def padding(self, text_id, max_ngram_len):
@@ -105,6 +117,16 @@ class DataHelper:
             for i in range(len(text_id), max_ngram_len):
                 text_id.append(ku.PAD)
         return text_id
+
+
+
+    def product2idx(self, products):
+        res = {}
+        asin = set(products)
+        for idx, item in enumerate(asin):
+            res.update({item: idx})
+        return res
+
 
 def syntax(root, syntax_path, root_holder):
     if len(list(root.children)) == 0:
@@ -212,8 +234,6 @@ class DataLoader:
         if self.data_type == ku.review and self.review_domain is None:
             raise ValueError('if your data type is review then argument \'review_domain\''
                              ' must be not None, but got None.')
-        if self.num_reviews_per_user is None:
-            raise ValueError("'argument num_reviews_per_user must be not None, but got None.")
 
     def load_labeled_data(self, data_arr, u2i):
         y = []
@@ -243,15 +263,16 @@ class DataLoader:
         if binary == False and max_ngram_len == None:
             raise ValueError('if n-gram is not binary feature, then max_ngram_len must be not None, but got None')
 
-        text_list, y = self.load_labeled_data(data_arr, user2idx)
+        # text_list, y = self.load_labeled_data(data_arr, user2idx)
         if binary == True:
-            x, y = self._load_binary_n_gram_feature_label(text_list, y, ngram2idx)
+            x, y = self._load_binary_n_gram_feature_label(data_arr, user2idx, ngram2idx)
         else:
-            x, y = self._load_ngram_idx_feature_label(text_list, y, ngram2idx, max_ngram_len)
+            x, y = self._load_ngram_idx_feature_label(data_arr, user2idx, ngram2idx, max_ngram_len)
         return x, y
 
 
-    def _load_binary_n_gram_feature_label(self, text_list, y, ngram2idx):
+    def _load_binary_n_gram_feature_label(self, data_arr, user2idx, ngram2idx):
+        text_list, y = self.load_labeled_data(data_arr, user2idx)
         sample_num = len(text_list)
         clo = len(ngram2idx)
         x = np.zeros((sample_num, clo), dtype=bool)
@@ -262,12 +283,12 @@ class DataLoader:
         x = sparse.csr_matrix(x)
         return x, np.array(y)
 
-    def _load_ngram_idx_feature_label(self, text_list, y, ngram2idx, max_ngram_len):
+    def _load_ngram_idx_feature_label(self, data_arr, user2idx, ngram2idx, max_ngram_len):
+        text_list, y = self.load_labeled_data(data_arr, user2idx)
         sample_num = len(text_list)
         x = np.zeros((sample_num, max_ngram_len), dtype=np.uint32)
         for idx, text in enumerate(text_list):
-            text_ngram_id = self.datahelper.text2ngramid(text, ngram2idx)
-            text_ngram_id = self.datahelper.padding(text_ngram_id, max_ngram_len)
+            text_ngram_id = self.datahelper.text2ngramid(text, ngram2idx, padding=True, max_len=max_ngram_len)
             x[idx, :] = text_ngram_id
         return x, np.array(y)
 
@@ -327,14 +348,20 @@ class ReviewDataLoader(DataLoader):
             res.extend(self._load_user_reviews(user))
         return sku.shuffle(res)
 
+    def load_products_id(self, products, product2idx):
+        res = []
+        for product in products:
+            res.append(product2idx[product])
+        return np.array(res)
+
 
 class TwitterDataLoader(DataLoader):
-    def __init__(self, data_type, num_reviews_per_num, review_domain=None, min_threshold=None):
-        super(TwitterDataLoader, self).__init__(data_type, review_domain, min_threshold, num_reviews_per_num)
+    def __init__(self, data_type, num_reviews_per_user, review_domain=None, min_threshold=None):
+        super(TwitterDataLoader, self).__init__(data_type, review_domain, min_threshold, num_reviews_per_user)
         self.input_error_testing()
 
     def _load_user_tweets(self, user):
-        file = os.path.join(ku.twitter_data_root, user)
+        file = os.path.join(ku.twitter_process, user)
         res = fu.load_array(file)
         if self.min_threshold is not None and len(res) < self.min_threshold:
             return []
@@ -349,12 +376,36 @@ class TwitterDataLoader(DataLoader):
             res.extend(self._load_user_tweets(user))
         return sku.shuffle(res)
 
+    def load_tweets_image(self, users):
+        res = []
+        for user in users:
+            res.extend(self._load_tweets_image(user))
+        return sku.shuffle(res)
+
+    def _load_tweets_image(self, user):
+        tweets = self.load_users_data([user])
+        image_files = fu.listchildren(os.path.join(ku.photo_dir, user))
+        images_name = fu.get_suffix_list(image_files)
+        res = []
+        for tweet in tweets:
+            photo_id = tweet[ku.entities][ku.media][0][ku.media_id_str]
+            if photo_id in images_name:
+                image_file = os.path.join(ku.photo_dir, user, photo_id + '.jpg')
+                image = phu.load_photo(image_file)
+                if image is not None:
+                    res.append({ku.twitter_text: tweet[ku.twitter_text], ku.image: image,
+                                ku.twitter_user: user})
+        return res
+
     def get_users(self, user_num):
         assert user_num <= 1198
-        users = fu.listchildren(ku.twitter_data_root, concat=False)
-        user_index = np.random.randint(0, len(users), user_num)
-        res = []
-        for i in user_index:
-            res.append(users[i])
+        users = fu.listchildren(ku.twitter_process, concat=False)
+        res = users[:user_num]
+        # user_index = np.random.randint(0, len(users), user_num)
+        # res = []
+        # for i in user_index:
+        #     res.append(users[i])
         return res
+
+
 
