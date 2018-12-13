@@ -2,30 +2,21 @@ from utils.vocabulary_utils import Vocabulary
 import utils.key_utils as ku
 import utils.data_utils as du
 import sklearn.utils as sku
-
+import baselines.AA_of_MM.data_process as dp
 from models.svm_classifier import Svm
 
 
 max_user_num = 50
 num_reviews_per_user = 100
 min_threshold = 200
-data_type = ku.twitter
 
-datahelper = du.DataHelper(data_type)
-voca = Vocabulary(ku.voca_root, data_type)
-userhelper = du.UserHelper(data_type)
+datahelper = du.DataHelper()
+voca = Vocabulary(ku.voca_root)
+userhelper = du.UserHelper()
 
 
-if data_type == ku.review:
-    dataloader = du.ReviewDataLoader(data_type, ku.Kindle, min_threshold=min_threshold
-                           , num_reviews_per_user=num_reviews_per_user)
-    reviews = dataloader.load_domain_reviews()
-    users = userhelper.get_users(reviews, max_user_num)
-    reviews = dataloader.load_users_data(users)
-else:
-    dataloader = du.TwitterDataLoader(data_type, num_reviews_per_user=num_reviews_per_user)
-    users = dataloader.get_users(max_user_num)
-    reviews = dataloader.load_users_data(users)
+reviews  = du.ReviewLoader(ku.Movie, product_num=50).get_data()
+users = userhelper.get_users(reviews)
 
 
 user2idx = userhelper.user2idx(users)
@@ -66,9 +57,9 @@ for i in range(epoch):
     print('epoch {}'.format(i + 1))
 
 
-    training_x, training_y = dataloader.load_n_gram_feature_label(training_data, ngram2idx, user2idx)
-    valid_x, valid_y = dataloader.load_n_gram_feature_label(valid_data, ngram2idx, user2idx,)
-    testing_x, testing_y = dataloader.load_n_gram_feature_label(testing_data, ngram2idx, user2idx)
+    training_x, training_y = dp.load_n_gram_feature_label(training_data, ngram2idx, user2idx)
+    valid_x, valid_y = dp.load_n_gram_feature_label(valid_data, ngram2idx, user2idx,)
+    testing_x, testing_y = dp.load_n_gram_feature_label(testing_data, ngram2idx, user2idx)
 
     classifier = Svm(**parameters)
     classifier.fit(training_x, training_y)

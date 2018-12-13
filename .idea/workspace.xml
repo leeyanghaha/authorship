@@ -2,25 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbe0c411-b9e2-487f-963a-e8c2ade95d1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/liyan.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/text_cnn_product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_method/data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_method/data_process.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_method/graft.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_method/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/photo_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baselines/AA_of_MM/data_process.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baselines/CNN_AST/data_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/CNN_AST/keras_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/text_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/n_grams.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/n_grams.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/text_cnn_product.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/text_cnn_product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_method/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_method/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/data_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_method/graft.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/graft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_method/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/data_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/function_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/function_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/key_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/key_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/pattern_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/pattern_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/twitter_data_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/vocabulary_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/vocabulary_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,23 +23,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/authorship$keras_CNN_train.coverage" NAME="keras_CNN_train Coverage Results" MODIFIED="1544061314165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
+    <SUITE FILE_PATH="coverage/authorship$keras_CNN_train.coverage" NAME="keras_CNN_train Coverage Results" MODIFIED="1544674307778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
     <SUITE FILE_PATH="coverage/authorship$lh_graft.coverage" NAME="lh_graft Coverage Results" MODIFIED="1543474726113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/LH" />
     <SUITE FILE_PATH="coverage/authorship$data_process.coverage" NAME="data_process Coverage Results" MODIFIED="1543981188439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$lda_graft.coverage" NAME="lda_graft Coverage Results" MODIFIED="1543548633928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/LDAH_S" />
     <SUITE FILE_PATH="coverage/authorship$vocabulary__1_.coverage" NAME="vocabulary (1) Coverage Results" MODIFIED="1542272356381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
     <SUITE FILE_PATH="coverage/authorship$photo_utils.coverage" NAME="photo_utils Coverage Results" MODIFIED="1544012794592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
-    <SUITE FILE_PATH="coverage/authorship$main.coverage" NAME="main Coverage Results" MODIFIED="1544347933657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
+    <SUITE FILE_PATH="coverage/authorship$main.coverage" NAME="main Coverage Results" MODIFIED="1544586271542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$train.coverage" NAME="train Coverage Results" MODIFIED="1543050107673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax_CNN" />
     <SUITE FILE_PATH="coverage/authorship$LDAHS_train.coverage" NAME="LDAHS_train Coverage Results" MODIFIED="1543762158748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/LDAH_S" />
-    <SUITE FILE_PATH="coverage/authorship$AA_of_MMtrain.coverage" NAME="AA_of_MMtrain Coverage Results" MODIFIED="1543992514691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
+    <SUITE FILE_PATH="coverage/authorship$AA_of_MMtrain.coverage" NAME="AA_of_MMtrain Coverage Results" MODIFIED="1544678780039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
     <SUITE FILE_PATH="coverage/authorship$train_scnn.coverage" NAME="train_scnn Coverage Results" MODIFIED="1544166684605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax_CNN" />
     <SUITE FILE_PATH="coverage/authorship$twitter_data_utils.coverage" NAME="twitter_data_utils Coverage Results" MODIFIED="1543889886774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/authorship$n_grams.coverage" NAME="n_grams Coverage Results" MODIFIED="1542266621295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/authorship$graft__1_.coverage" NAME="graft (1) Coverage Results" MODIFIED="1543041487416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax-CNN" />
-    <SUITE FILE_PATH="coverage/authorship$data.coverage" NAME="data Coverage Results" MODIFIED="1544332400072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
+    <SUITE FILE_PATH="coverage/authorship$data.coverage" NAME="data Coverage Results" MODIFIED="1544671138219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$graft__2_.coverage" NAME="graft (2) Coverage Results" MODIFIED="1543130695910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax_CNN" />
-    <SUITE FILE_PATH="coverage/authorship$graft.coverage" NAME="graft Coverage Results" MODIFIED="1544429190328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
+    <SUITE FILE_PATH="coverage/authorship$graft.coverage" NAME="graft Coverage Results" MODIFIED="1544673645471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$data_utils.coverage" NAME="data_utils Coverage Results" MODIFIED="1542280409547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/authorship$keras_model.coverage" NAME="keras_model Coverage Results" MODIFIED="1543206873997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
     <SUITE FILE_PATH="coverage/authorship$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1543158539923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
@@ -57,18 +51,18 @@
         <counts>
           <entry key="project.closed" value="33" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="3" />
+          <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="11" />
           <entry key="project.open.time.9" value="15" />
-          <entry key="project.opened" value="36" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="_bootstrap&gt;" value="1" />
-          <entry key="py" value="278" />
+          <entry key="py" value="301" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
@@ -76,19 +70,19 @@
         <counts>
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="PyRemoteDebug" value="1" />
-          <entry key="Python" value="278" />
+          <entry key="Python" value="301" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="102" />
-          <entry key="py" value="93040" />
+          <entry key="py" value="106926" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="102" />
-          <entry key="Python" value="93040" />
+          <entry key="Python" value="106926" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -97,47 +91,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/my_method/graft.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/photo_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-                <marker date="1544173856710" expanded="true" signature="285:936" ph="..." />
-                <marker date="1544173856710" expanded="true" signature="309:347" ph="..." />
-                <marker date="1544173856710" expanded="true" signature="708:936" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_method/data_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+            <state relative-caret-position="540">
+              <caret line="20" column="64" lean-forward="true" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/my_method/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" column="42" lean-forward="true" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+            <state relative-caret-position="459">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
               </folding>
@@ -146,12 +116,47 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-459">
+              <caret line="40" column="59" lean-forward="true" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+              <folding>
+                <marker date="1544679434560" expanded="true" signature="1456:3086" ph="..." />
+                <marker date="1544679434560" expanded="true" signature="3086:3091" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/data_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="273" column="78" selection-start-line="273" selection-start-column="78" selection-end-line="273" selection-end-column="78" />
+            <state relative-caret-position="483">
+              <caret line="391" column="51" selection-start-line="391" selection-start-column="51" selection-end-line="391" selection-end-column="51" />
               <folding>
-                <marker date="1544421729278" expanded="true" signature="1484:1487" ph="..." />
+                <marker date="1544680097967" expanded="true" signature="1322:1325" ph="..." />
+                <marker date="1544680097967" expanded="true" signature="10710:10712" ph="..." />
+                <marker date="1544680097967" expanded="true" signature="14639:14641" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_method/data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+                <marker date="1544671707921" expanded="true" signature="590:704" ph="..." />
+                <marker date="1544671707921" expanded="true" signature="743:1811" ph="..." />
+                <marker date="1544671707921" expanded="true" signature="2696:2697" ph="..." />
+                <marker date="1544671707921" expanded="true" signature="2807:2812" ph="..." />
+                <marker date="1544671707921" expanded="true" signature="2807:3334" ph="..." />
+                <marker date="1544671707921" expanded="true" signature="3362:3730" ph="..." />
+                <marker date="1544671707921" expanded="true" signature="4153:4553" ph="..." />
+                <marker date="1544671707921" expanded="true" signature="4549:4553" ph="..." />
               </folding>
             </state>
           </provider>
@@ -160,20 +165,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="30" column="34" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="405">
+              <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/vocabulary_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -195,10 +191,15 @@
       <find>posi</find>
       <find>device_ids</find>
       <find>devices</find>
-      <find>print</find>
       <find>twitter</find>
       <find>twitter_data_med</find>
       <find>twitter_data_root</find>
+      <find>len result</find>
+      <find>user2product</find>
+      <find>result</find>
+      <find>A189C4FM4TLW52</find>
+      <find>next</find>
+      <find>print</find>
     </findStrings>
     <dirStrings>
       <dir>C:\code\authorship\utils</dir>
@@ -210,8 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/utils/plot.py" />
-        <option value="$PROJECT_DIR$/baselines/AA_of_MM/vocabulary.py" />
         <option value="$PROJECT_DIR$/models/svm_classifier.py" />
         <option value="$PROJECT_DIR$/baselines/AA_of_MM/test.py" />
         <option value="$PROJECT_DIR$/baselines/AA_of_MM/train.py" />
@@ -236,7 +235,6 @@
         <option value="$PROJECT_DIR$/baselines/LDAH_S/LDAHS_train.py" />
         <option value="$PROJECT_DIR$/baselines/LDAH_S/data.py" />
         <option value="$PROJECT_DIR$/utils/review_data_utils.py" />
-        <option value="$PROJECT_DIR$/utils/vocabulary_utils.py" />
         <option value="$PROJECT_DIR$/baselines/AA_of_MM/data.py" />
         <option value="$PROJECT_DIR$/utils/twitter_data_utils.py" />
         <option value="$PROJECT_DIR$/baselines/Syntax_CNN/data.py" />
@@ -244,23 +242,26 @@
         <option value="$PROJECT_DIR$/baselines/AA_of_MM/graft.py" />
         <option value="$PROJECT_DIR$/baselines/CNN_AST/model.py" />
         <option value="$PROJECT_DIR$/models/text-cnn.py" />
-        <option value="$PROJECT_DIR$/my_method/data_process.py" />
         <option value="$PROJECT_DIR$/utils/function_utils.py" />
-        <option value="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" />
         <option value="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" />
         <option value="$PROJECT_DIR$/utils/photo_utils.py" />
         <option value="$PROJECT_DIR$/../tweetspider/graft.py" />
         <option value="$USER_HOME$/Desktop/a.py" />
-        <option value="$PROJECT_DIR$/my_method/data.py" />
         <option value="$PROJECT_DIR$/models/text_cnn.py" />
         <option value="$PROJECT_DIR$/models/text_cnn_concat_resnet.py" />
-        <option value="$PROJECT_DIR$/utils/key_utils.py" />
         <option value="$PROJECT_DIR$/models/n_grams.py" />
-        <option value="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" />
-        <option value="$PROJECT_DIR$/models/text_cnn_product.py" />
-        <option value="$PROJECT_DIR$/my_method/main.py" />
-        <option value="$PROJECT_DIR$/utils/data_utils.py" />
+        <option value="$PROJECT_DIR$/utils/key_utils.py" />
+        <option value="$PROJECT_DIR$/my_method/data.py" />
         <option value="$PROJECT_DIR$/my_method/graft.py" />
+        <option value="$PROJECT_DIR$/baselines/CNN_AST/data_process.py" />
+        <option value="$PROJECT_DIR$/utils/vocabulary_utils.py" />
+        <option value="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" />
+        <option value="$PROJECT_DIR$/baselines/AA_of_MM/data_process.py" />
+        <option value="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" />
+        <option value="$PROJECT_DIR$/models/text_cnn_product.py" />
+        <option value="$PROJECT_DIR$/utils/data_utils.py" />
+        <option value="$PROJECT_DIR$/my_method/data_process.py" />
+        <option value="$PROJECT_DIR$/my_method/main.py" />
       </list>
     </option>
   </component>
@@ -271,10 +272,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="808" />
-    <option name="height" value="428" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="856" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -284,6 +285,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,7 +335,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -356,7 +357,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.graft">
+  <component name="RunManager" selected="Python.AA_of_MMtrain">
+    <configuration name="AA_of_MMtrain" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="authorship" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/AA_of_MM" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="authorship" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -407,6 +430,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
       </envs>
       <option name="SDK_HOME" value="" />
@@ -470,43 +494,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_scnn" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="authorship" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/Syntax_CNN" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.keras_CNN_train" />
       <item itemvalue="Python.graft" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.train_scnn" />
       <item itemvalue="Python.data" />
+      <item itemvalue="Python.AA_of_MMtrain" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.graft" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.data" />
-        <item itemvalue="Python.train_scnn" />
+        <item itemvalue="Python.AA_of_MMtrain" />
         <item itemvalue="Python.keras_CNN_train" />
+        <item itemvalue="Python.graft" />
+        <item itemvalue="Python.data" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -533,16 +534,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
+    <frame x="-6" y="-6" width="1381" height="895" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49804688" visible="true" weight="0.17416452" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49804688" visible="true" weight="0.15041572" />
       <window_info id="Structure" order="1" sideWeight="0.5019531" side_tool="true" weight="0.18442933" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293011" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49811035" weight="0.31557924" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39921466" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4973545" weight="0.3184797" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39842725" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
@@ -551,15 +552,15 @@
       <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49811035" weight="0.32756326" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50188965" side_tool="true" weight="0.3288948" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.3270525" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5026455" side_tool="true" weight="0.3184797" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.3263434" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.49609375" weight="0.32955405" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" weight="0.023778921" />
+      <window_info anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.027966741" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49804688" visible="true" weight="0.17416452" />
@@ -595,27 +596,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/torch/nn/parallel/_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/torch/nn/functional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/graft.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/torch/utils/data/dataloader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -766,20 +746,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/model.py" />
-    <entry file="file://$PROJECT_DIR$/utils/function_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="74" column="14" lean-forward="true" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../tweetspider/graft.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -808,20 +774,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/a.py" />
     <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/keras/engine/training_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -833,43 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="30" column="34" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="47" column="37" lean-forward="true" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#95#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="273" column="78" selection-start-line="273" selection-start-column="78" selection-end-line="273" selection-end-column="78" />
-          <folding>
-            <marker date="1544421729278" expanded="true" signature="1484:1487" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-406">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -886,46 +802,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/data_process.py">
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/-520390954/json/decoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="269">
+          <caret line="356" selection-start-line="356" selection-end-line="356" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
+    <entry file="file://$PROJECT_DIR$/utils/function_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="108">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/graft.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/vocabulary_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/data_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" selection-start-line="17" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/data_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+            <marker date="1544671707921" expanded="true" signature="590:704" ph="..." />
+            <marker date="1544671707921" expanded="true" signature="743:1811" ph="..." />
+            <marker date="1544671707921" expanded="true" signature="2696:2697" ph="..." />
+            <marker date="1544671707921" expanded="true" signature="2807:2812" ph="..." />
+            <marker date="1544671707921" expanded="true" signature="2807:3334" ph="..." />
+            <marker date="1544671707921" expanded="true" signature="3362:3730" ph="..." />
+            <marker date="1544671707921" expanded="true" signature="4153:4553" ph="..." />
+            <marker date="1544671707921" expanded="true" signature="4549:4553" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="391" column="51" selection-start-line="391" selection-start-column="51" selection-end-line="391" selection-end-column="51" />
+          <folding>
+            <marker date="1544680097967" expanded="true" signature="1322:1325" ph="..." />
+            <marker date="1544680097967" expanded="true" signature="10710:10712" ph="..." />
+            <marker date="1544680097967" expanded="true" signature="14639:14641" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-232">
+          <caret line="47" column="37" lean-forward="true" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
           <folding>
             <element signature="e#0#95#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/vocabulary_utils.py">
+    <entry file="file://$PROJECT_DIR$/my_method/data_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+        <state relative-caret-position="540">
+          <caret line="20" column="64" lean-forward="true" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="40" column="59" lean-forward="true" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+          <folding>
+            <marker date="1544679434560" expanded="true" signature="1456:3086" ph="..." />
+            <marker date="1544679434560" expanded="true" signature="3086:3091" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_method/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="42" lean-forward="true" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+        <state relative-caret-position="459">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/graft.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>

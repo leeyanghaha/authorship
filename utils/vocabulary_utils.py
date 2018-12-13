@@ -8,10 +8,9 @@ import json
 
 
 class Vocabulary(object):
-    def __init__(self, voca_root, data_type):
+    def __init__(self, voca_root):
         self.ngram = Ngram()
-        self.data_type = data_type
-        self.data_helper = du.DataHelper(data_type)
+        self.data_helper = du.DataHelper()
         self. voca_root = voca_root
 
     def counter_character_n_grams(self, *reviews):

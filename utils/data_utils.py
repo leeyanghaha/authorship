@@ -19,8 +19,6 @@ class SyntaxPathHolder:
 
 
 class UserHelper:
-    def __init__(self, data_type):
-        self.data_type = data_type
 
     def sample_user(self, users, sample_num):
         if len(users) < sample_num:
@@ -30,10 +28,7 @@ class UserHelper:
 
     def count_user_number(self, data):
         counter = Counter()
-        if self.data_type == ku.review:
-            key = ku.reviewer_ID
-        else:
-            key = ku.twitter_id_str
+        key = ku.reviewer_ID
         for item in data:
             user = item[key]
             counter.update([user])
@@ -58,16 +53,13 @@ class UserHelper:
 
 
 
+
+
 class DataHelper:
-    def __init__(self, data_type):
-        self.data_type = data_type
 
     def get_text(self, data):
         text = []
-        if self.data_type == ku.review:
-            key = ku.review_text
-        else:
-            key = ku.twitter_text
+        key = ku.review_text
         for item in data:
             text.append(item[key])
         return text
@@ -117,7 +109,6 @@ class DataHelper:
             for i in range(len(text_id), max_ngram_len):
                 text_id.append(ku.PAD)
         return text_id
-
 
 
     def product2idx(self, products):
@@ -175,7 +166,7 @@ class TorchDataLoader():
         self.max_pos_num = max_pos_num
         self.max_words_num = max_words_num
         self.nlp = spacy.load('en')
-        self.datahelper = DataHelper(self.data_type)
+        self.datahelper = DataHelper()
 
     def get_pos_id(self, text, max_words_num, max_pos_num):
         '''
@@ -228,7 +219,7 @@ class DataLoader:
         self.review_domain = review_domain
         self.min_threshold = min_threshold
         self.num_reviews_per_user = num_reviews_per_user
-        self.datahelper = DataHelper(self.data_type)
+        self.datahelper = DataHelper()
 
     def input_error_testing(self):
         if self.data_type == ku.review and self.review_domain is None:
@@ -313,99 +304,96 @@ class DataLoader:
                 ku.user_id: np.array(user_id)}
 
 
-class ReviewDataLoader(DataLoader):
-    def __init__(self, data_type, review_domain, min_threshold, num_reviews_per_user):
-        super(ReviewDataLoader, self).__init__(data_type, review_domain, min_threshold, num_reviews_per_user)
-        self.input_error_testing()
+class ReviewLoader:
+    def __init__(self, domain, product_num):
+        self.domain = domain
+        self.seed_product = 'B003EYVXV4'
+        self.datahelper = DataHelper()
+        self.userhelper = UserHelper()
+        self.product2user = fu.load_array(os.path.join(ku.index_root, domain, 'product2user.json'))[0]
+        self.user2product = fu.load_array(os.path.join(ku.index_root, domain, 'user2product.json'))[0]
+        self.all_products = fu.listchildren(os.path.join(ku.product_root, domain), concat=False)
+        self.product_num = product_num
 
-    def load_domain_reviews(self):
-        domain_dir = os.path.join(ku.user_root, self.review_domain)
-        users = fu.listchildren(domain_dir, concat=False)
-        all = []
-        for user in users:
-            all.extend(self._load_user_reviews(user))
-        all = sku.shuffle(all)
-        return all
-
-    def _load_user_reviews(self, user):
-        # 获取某个user, 某个domain下满足参数的reviews
-        res = []
-        file = os.path.join(ku.user_root, self.review_domain, user)
-        reviews = fu.load_array(file)
-        if self.min_threshold is not None:
+    def remove_rare_users(self, result, user_counter, threshold):
+        removing_users = set()
+        for user, count in dict(user_counter).items():
+            if count < threshold:
+                removing_users.add(user)
+        for pro, reviews in result.items():
+            temp = []
             for review in reviews:
-                if self.min_threshold <= review[ku.reviewer_count]:
-                    res.append(review)
-        else:
-            res = reviews
-        if self.num_reviews_per_user is not None:
-            res = res[: self.num_reviews_per_user]
-        return sku.shuffle(res)
+                if review[ku.reviewer_ID] not in removing_users:
+                    temp.append(review)
+                result[pro] = temp
+        return result
 
-    def load_users_data(self, users):
-        res = []
+    def check_efficiency(self, result):
+        reviews = []
+        for i in result:
+            reviews.extend(result[i])
+        users = self.userhelper.get_users(reviews)
+        len_users = len(set(list(users)))
+        len_reviews = len(reviews)
+        print('每条product 有 {:.2f} 条 reviews '.format(len_reviews / self.product_num))
+        print('users num', len_users)
+        print('每个user 有 {:.2f} reviews'.format(len_reviews / len_users))
+        print('products num: ', self.product_num)
+        print('共有 {} 条 reviews.'.format(len_reviews))
+        return reviews
+
+    def get_data(self):
+        candidate_products = set(self.all_products)
+        product = self.seed_product
+        candidate_products.remove(product)
+        product_counter = Counter()
+        user_counter = Counter()
+        result = {}
+        for i in range(self.product_num):
+            next_product, product_counter_new, user_counter_new, result_new = self.iteration(product, product_counter,
+                                                                                        user_counter,
+                                                                                        self.user2product, result,
+                                                                                        candidate_products)
+            if next_product != '':
+                candidate_products.remove(next_product)
+                product = next_product
+                product_counter = product_counter_new
+                user_counter = user_counter_new
+                result = result_new
+            else:
+                continue
+        result = self.remove_rare_users(result, user_counter, threshold=12)
+        reviews = self.check_efficiency(result)
+        reviews = sku.shuffle(reviews)
+        return reviews
+
+    def get_product_reviews(self, product):
+        path = os.path.join(ku.product_root, self.domain, product)
+        reviews = fu.load_array(path)
+        return reviews
+
+    def iteration(self, product, product_counter, user_counter, user2product,
+                  result, candidate_products):
+        reviews = self.get_product_reviews(product)
+        users = self.userhelper.get_users(reviews)
         for user in users:
-            res.extend(self._load_user_reviews(user))
-        return sku.shuffle(res)
+            product_counter.update(user2product[user])
+        user_counter.update(users)
+        result.update({product: reviews})
+        most_product = product_counter.most_common()
+        next_product = ''
+        for p in most_product:
+            p = p[0]
+            if p in candidate_products:
+                next_product = p
+                break
+            else:
+                continue
+        return next_product, product_counter, user_counter, result
 
     def load_products_id(self, products, product2idx):
         res = []
         for product in products:
             res.append(product2idx[product])
         return np.array(res)
-
-
-class TwitterDataLoader(DataLoader):
-    def __init__(self, data_type, num_reviews_per_user, review_domain=None, min_threshold=None):
-        super(TwitterDataLoader, self).__init__(data_type, review_domain, min_threshold, num_reviews_per_user)
-        self.input_error_testing()
-
-    def _load_user_tweets(self, user):
-        file = os.path.join(ku.twitter_process, user)
-        res = fu.load_array(file)
-        if self.min_threshold is not None and len(res) < self.min_threshold:
-            return []
-        else:
-            if self.num_reviews_per_user is not None:
-                res = res[: self.num_reviews_per_user]
-        return sku.shuffle(res)
-
-    def load_users_data(self, users):
-        res = []
-        for user in users:
-            res.extend(self._load_user_tweets(user))
-        return sku.shuffle(res)
-
-    def load_tweets_image(self, users):
-        res = []
-        for user in users:
-            res.extend(self._load_tweets_image(user))
-        return sku.shuffle(res)
-
-    def _load_tweets_image(self, user):
-        tweets = self.load_users_data([user])
-        image_files = fu.listchildren(os.path.join(ku.photo_dir, user))
-        images_name = fu.get_suffix_list(image_files)
-        res = []
-        for tweet in tweets:
-            photo_id = tweet[ku.entities][ku.media][0][ku.media_id_str]
-            if photo_id in images_name:
-                image_file = os.path.join(ku.photo_dir, user, photo_id + '.jpg')
-                image = phu.load_photo(image_file)
-                if image is not None:
-                    res.append({ku.twitter_text: tweet[ku.twitter_text], ku.image: image,
-                                ku.twitter_user: user})
-        return res
-
-    def get_users(self, user_num):
-        assert user_num <= 1198
-        users = fu.listchildren(ku.twitter_process, concat=False)
-        res = users[:user_num]
-        # user_index = np.random.randint(0, len(users), user_num)
-        # res = []
-        # for i in user_index:
-        #     res.append(users[i])
-        return res
-
-
 

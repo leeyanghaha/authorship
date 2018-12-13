@@ -25,6 +25,7 @@ Kindle = 'reviews_Kindle_Store'
 Movie = 'reviews_Movies_and_TV'
 Elect = 'reviews_Electronics'
 Apps = 'reviews_Apps_for_Android'
+All = 'all'
 
 
 #vocabulary filed
@@ -34,8 +35,10 @@ pos2idx = 'pos2idx'
 UNK = 'UNK'
 PAD = 0
 root = '/home/yangl/research/authorship/'
-user_root = os.path.join(root, 'data/user')
+user_root = os.path.join(root, 'data/review/user/')
+product_root = os.path.join(root, 'data/review/product')
 voca_root = os.path.join(root, 'model/vocabulary')
+index_root = os.path.join(root, 'data/review/user/index')
 twitter_data_root = os.path.join(root, 'data/twitter/')
 twitter_data_all = os.path.join(twitter_data_root, 'all')
 twitter_process = os.path.join(twitter_data_root, 'process')
