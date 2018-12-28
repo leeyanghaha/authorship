@@ -1,49 +1,46 @@
 import utils.key_utils as ku
-import utils.data_utils as du
+from utils.data_utils import ReviewLoader, UserHelper, DataHelper, FeatureLoader
 from utils.vocabulary_utils import Vocabulary
 import baselines.Syntax_CNN.model as syntax_cnn
 import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
-max_user_num = 50
-num_reviews_per_user = 50
-ngram_min_threshold = 2
-max_ngram_len = 600
+
+ngram_min_threshold = 5
 max_pos_num = 10
 max_words_num = 500
-syntax_dim = 60
-ngram_dim = 300
-
 
 batch_size = 32
 epoch = 100
 
-data_type = ku.twitter
-datahelper = du.DataHelper(data_type)
-voca = Vocabulary(ku.voca_root, data_type)
-userhelper = du.UserHelper(data_type)
 
-if data_type == ku.review:
-    dataloader = du.ReviewDataLoader(data_type, ku.Kindle, min_threshold=num_reviews_per_user
-                           , num_reviews_per_user=num_reviews_per_user)
-    reviews = dataloader.load_domain_reviews()
-    users = userhelper.get_users(reviews, max_user_num)
-    users = userhelper.sample_user(users, max_user_num)
-    reviews = dataloader.load_users_data(users)
-else:
-    dataloader = du.TwitterDataLoader(data_type, num_reviews_per_user=num_reviews_per_user)
-    users = dataloader.get_users(max_user_num)
-    reviews = dataloader.load_users_data(users)
+voca = Vocabulary(ku.voca_root)
+userhelper = UserHelper()
 
+reviews  = ReviewLoader(ku.Movie, product_num=50).get_data()
+
+users = userhelper.get_users(reviews)
+#
+#
 user2idx = userhelper.user2idx(users)
 ngram2idx = voca.character_n_gram_table(reviews, min_threshold=ngram_min_threshold)
 pos2idx = userhelper.pos2idx()
-print('len reviews: ', len(reviews))
 
 
-feature = dataloader.syntax_get_feature_label(reviews, user2idx, ngram2idx, pos2idx, max_ngram_len,
-                                             max_pos_num, max_words_num)
+data_params = {ku.max_ngram_len: 600, ku.max_pos_num: max_pos_num,
+               ku.max_words_num: max_words_num, ku.user2idx: user2idx,
+               ku.ngram2idx: ngram2idx, ku.pos2idx: pos2idx,
+               }
+
+net_params = {ku.max_words_num: max_words_num, 'syntax_dim': 60, 'ngram_dim': 300,
+              'pos_type_num': len(pos2idx), 'out_dim': len(user2idx),
+              ku.max_pos_num: max_pos_num, 'vocab_size': len(ngram2idx),
+              'batch_size': 32, 'filters': 300, 'kernel_size': 3,
+              'loss': 'categorical_crossentropy'}
+
+feature_loader = FeatureLoader(**data_params)
+feature = feature_loader.syntax_cnn_feature_label(reviews)
 
 pos_id, position_id, ngram_id, user_id = feature[ku.pos_id], feature[ku.pos_order_id], \
                                          feature[ku.ngram_id], feature[ku.user_id]
@@ -64,8 +61,7 @@ training_y = user_id[:training_split]
 testing_y = user_id[training_split:]
 
 
-model = syntax_cnn.Net(max_words_num, syntax_dim, max_ngram_len, ngram_dim, len(ngram2idx),
-                 len(pos2idx), len(user2idx), max_pos_num)
+model = syntax_cnn.Net(**net_params)
 
 
 model.fit(training_x, training_y)

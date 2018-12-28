@@ -29,4 +29,3 @@ def load_n_gram_feature_label(data_arr, ngram2idx, user2idx):
             x[idx, int(text_ngram_id[i])] = True
     x = sparse.csr_matrix(x)
     return x, np.array(y)
-

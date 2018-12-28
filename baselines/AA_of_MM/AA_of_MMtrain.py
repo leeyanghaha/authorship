@@ -6,10 +6,6 @@ import baselines.AA_of_MM.data_process as dp
 from models.svm_classifier import Svm
 
 
-max_user_num = 50
-num_reviews_per_user = 100
-min_threshold = 200
-
 datahelper = du.DataHelper()
 voca = Vocabulary(ku.voca_root)
 userhelper = du.UserHelper()
@@ -29,6 +25,7 @@ print('len ngram: ', len(ngram2idx))
 print('len reviews: ', len(reviews))
 
 
+
 parameters = {'penalty': 'l2', 'loss': 'hinge', 'dual': True, 'multi_class': 'ovr',
                   'fit_intercept': True, 'max_iter': 1000}
 
@@ -40,6 +37,8 @@ def test(classifier, text_x, test_y):
     print('testing......')
     acc = classifier.accuracy(test_y, y_pred)
     print('test acc: ', acc)
+    print('y_true: ', test_y[:100])
+    print('y_pred: ', y_pred[:100])
     return acc
 
 

@@ -28,12 +28,12 @@ Apps = 'reviews_Apps_for_Android'
 All = 'all'
 
 
-#vocabulary filed
-charngram2idx = 'charngram2idx'
-wordngram2idx = 'wordngram2idx'
-pos2idx = 'pos2idx'
+# vocabulary filed
+
 UNK = 'UNK'
 PAD = 0
+
+# file path filed
 root = '/home/yangl/research/authorship/'
 user_root = os.path.join(root, 'data/review/user/')
 product_root = os.path.join(root, 'data/review/product')
@@ -50,7 +50,7 @@ model_root = os.path.join(root, 'model')
 AA_of_MM = 'aa_of_mm'
 CNN_AST_model = os.path.join(model_root, 'CNN_AST/weights.h5')
 Syntax_CNN_model = os.path.join(model_root, 'Syntax_CNN/weights.h5')
-
+products_embeds = os.path.join(model_root, 'products_embeds')
 
 # processing field
 text_id = 'text_id'
@@ -65,3 +65,12 @@ pos_order_id = 'pos_order_id'
 
 review = 'reviews'
 twitter = 'twitter'
+
+# parameter field
+user2idx = 'user2idx'
+ngram2idx = 'ngram2idx'
+pos2idx = 'pos2idx'
+max_ngram_len = 'max_ngram_len'
+max_pos_num = 'max_pos_num'
+max_words_num = 'max_words_num'
+

@@ -8,6 +8,7 @@ from scipy import sparse
 import numpy as np
 import spacy
 import os
+from keras.utils.np_utils import to_categorical
 import utils.photo_utils as phu
 import json
 
@@ -119,6 +120,14 @@ class DataHelper:
         return res
 
 
+    def load_products_id(self, products, product2idx):
+        res = []
+        for product in products:
+            res.append(product2idx[product])
+        return np.array(res)
+
+
+
 def syntax(root, syntax_path, root_holder):
     if len(list(root.children)) == 0:
         return
@@ -131,6 +140,7 @@ def syntax(root, syntax_path, root_holder):
                 root_holder = child_holder
             syntax(child, syntax_path, root_holder)
         return syntax_path
+
 
 def syntax_tree(nlp, text, pos2idx):
     doc = nlp(text)
@@ -153,11 +163,9 @@ def syntax_tree(nlp, text, pos2idx):
     return pos_id
 
 
-class TorchDataLoader():
-    def __init__(self, data_loader, data_arr, user2idx, ngram2idx, pos2idx, max_ngram_num,
+class ItemLoader():
+    def __init__(self, data_arr, user2idx, ngram2idx, pos2idx, max_ngram_num,
                  max_pos_num, max_words_num ):
-        self.data_loader = data_loader
-        self.data_type = data_loader.data_type
         self.data_arr = data_arr
         self.user2idx = user2idx
         self.ngram2idx = ngram2idx
@@ -198,12 +206,8 @@ class TorchDataLoader():
 
     def __getitem__(self, idx):
         item = self.data_arr[idx]
-        if self.data_type == ku.review:
-            user = item[ku.reviewer_ID]
-            text_key = ku.review_text
-        else:
-            user = item[ku.twitter_id_str]
-            text_key = ku.twitter_text
+        user = item[ku.reviewer_ID]
+        text_key = ku.review_text
         text_n_grams = self.datahelper.text2ngramid(item[text_key], self.ngram2idx)
         user_id = self.user2idx[user]
         ngram_id = self.datahelper.padding(text_n_grams, self.max_ngram_num)
@@ -213,81 +217,62 @@ class TorchDataLoader():
         return sample
 
 
-class DataLoader:
-    def __init__(self, data_type, review_domain=None, min_threshold=None, num_reviews_per_user=None):
-        self.data_type = data_type
-        self.review_domain = review_domain
-        self.min_threshold = min_threshold
-        self.num_reviews_per_user = num_reviews_per_user
+
+class FeatureLoader:
+    def __init__(self, **params):
         self.datahelper = DataHelper()
+        self._check_params(**params)
 
-    def input_error_testing(self):
-        if self.data_type == ku.review and self.review_domain is None:
-            raise ValueError('if your data type is review then argument \'review_domain\''
-                             ' must be not None, but got None.')
+    def _check_params(self, **params):
+        if ku.ngram2idx in params:
+            self.ngram2idx = params[ku.ngram2idx]
+        if ku.user2idx in params:
+            self.user2idx = params[ku.user2idx]
+        if 'pos2idx' in params:
+            self.pos2idx = params[ku.pos2idx]
+        if 'max_ngram_len' in params:
+            self.max_ngram_len = params[ku.max_ngram_len]
+        if 'max_pos_num' in params:
+            self.max_pos_num = params[ku.max_pos_num]
+        if 'max_words_num' in params:
+            self.max_words_num = params[ku.max_words_num]
 
-    def load_labeled_data(self, data_arr, u2i):
+    def load_labeled_data(self, data_arr):
         y = []
         x = []
-        if self.data_type == ku.review:
-            Id = ku.reviewer_ID
-            text = ku.review_text
-        else:
-            Id = ku.twitter_id_str
-            text = ku.twitter_text
+        Id = ku.reviewer_ID
+        text = ku.review_text
         for item in data_arr:
-            user = u2i[item[Id]]
+            user = self.user2idx[item[Id]]
             x.append(item[text])
             y.append(user)
         return x, y
 
-    def load_n_gram_feature_label(self, data_arr, ngram2idx, user2idx, max_ngram_len=None,
-                                  binary=True):
-        '''
-        将 data_arr 转换成为n_gram表示
-        :param data_arr:
-        :param ngram2idx:
-        :param user2idx:
-        :param to_sparse:
-        :return: x: [sample, clo], y: [sample, ]
-        '''
-        if binary == False and max_ngram_len == None:
-            raise ValueError('if n-gram is not binary feature, then max_ngram_len must be not None, but got None')
-
-        # text_list, y = self.load_labeled_data(data_arr, user2idx)
-        if binary == True:
-            x, y = self._load_binary_n_gram_feature_label(data_arr, user2idx, ngram2idx)
-        else:
-            x, y = self._load_ngram_idx_feature_label(data_arr, user2idx, ngram2idx, max_ngram_len)
-        return x, y
-
-
-    def _load_binary_n_gram_feature_label(self, data_arr, user2idx, ngram2idx):
-        text_list, y = self.load_labeled_data(data_arr, user2idx)
+    def load_n_gram_binary_feature_label(self, data_arr, sparse_tag=True):
+        text_list, y = self.load_labeled_data(data_arr)
         sample_num = len(text_list)
-        clo = len(ngram2idx)
-        x = np.zeros((sample_num, clo), dtype=bool)
+        clo = len(self.ngram2idx)
+        x = np.zeros((sample_num, clo + 1), dtype=bool)
         for idx, text in enumerate(text_list):
-            text_ngram_id = self.datahelper.text2ngramid(text, ngram2idx)
+            text_ngram_id = self.datahelper.text2ngramid(text, self.ngram2idx)
             for i in range(len(text_ngram_id)):
                 x[idx, int(text_ngram_id[i])] = True
-        x = sparse.csr_matrix(x)
+        if sparse_tag:
+            x = sparse.csr_matrix(x)
         return x, np.array(y)
 
-    def _load_ngram_idx_feature_label(self, data_arr, user2idx, ngram2idx, max_ngram_len):
-        text_list, y = self.load_labeled_data(data_arr, user2idx)
+    def load_n_gram_idx_feature_label(self, data_arr):
+        text_list, y = self.load_labeled_data(data_arr)
         sample_num = len(text_list)
-        x = np.zeros((sample_num, max_ngram_len), dtype=np.uint32)
+        x = np.zeros((sample_num, self.max_ngram_len), dtype=np.uint32)
         for idx, text in enumerate(text_list):
-            text_ngram_id = self.datahelper.text2ngramid(text, ngram2idx, padding=True, max_len=max_ngram_len)
+            text_ngram_id = self.datahelper.text2ngramid(text, self.ngram2idx, padding=True, max_len=self.max_ngram_len)
             x[idx, :] = text_ngram_id
         return x, np.array(y)
 
-    def syntax_get_feature_label(self, data_arr, user2idx, ngram2idx, pos2idx, max_ngram_num,
-                 max_pos_num, max_words_num):
-        # 因为torch中的DataSet类很好用，适合有复杂的输入，因此当输入比较复杂时将DataLoader转换为Torch中的DataSet
-        torch_data_loader = TorchDataLoader(self, data_arr, user2idx, ngram2idx, pos2idx, max_ngram_num,
-                                           max_pos_num, max_words_num)
+    def syntax_cnn_feature_label(self, data_arr):
+        torch_data_loader = ItemLoader(data_arr, self.user2idx, self.ngram2idx, self.pos2idx,
+                                       self.max_ngram_len, self.max_pos_num, self.max_words_num)
         ngram_id = []
         pos_id = []
         position_id = []
@@ -303,6 +288,13 @@ class DataLoader:
                 ku.pos_order_id: np.array(position_id).flatten().reshape((reviews_num, -1)),
                 ku.user_id: np.array(user_id)}
 
+    def one_hot_encoding(self, ids, num_classes):
+        res = []
+        for id in ids:
+            one_hot_id = to_categorical(id, num_classes=num_classes)
+            res.append(one_hot_id)
+        return np.array(res)
+
 
 class ReviewLoader:
     def __init__(self, domain, product_num):
@@ -315,7 +307,7 @@ class ReviewLoader:
         self.all_products = fu.listchildren(os.path.join(ku.product_root, domain), concat=False)
         self.product_num = product_num
 
-    def remove_rare_users(self, result, user_counter, threshold):
+    def _remove_rare_users(self, result, user_counter, threshold):
         removing_users = set()
         for user, count in dict(user_counter).items():
             if count < threshold:
@@ -325,19 +317,20 @@ class ReviewLoader:
             for review in reviews:
                 if review[ku.reviewer_ID] not in removing_users:
                     temp.append(review)
-                result[pro] = temp
+            result[pro] = temp
         return result
 
-    def check_efficiency(self, result):
+    def _check_efficiency(self, result):
         reviews = []
         for i in result:
             reviews.extend(result[i])
         users = self.userhelper.get_users(reviews)
         len_users = len(set(list(users)))
         len_reviews = len(reviews)
-        print('每条product 有 {:.2f} 条 reviews '.format(len_reviews / self.product_num))
+
+        print('每条 product 有 {:.2f} 条 reviews '.format(len_reviews / self.product_num))
         print('users num', len_users)
-        print('每个user 有 {:.2f} reviews'.format(len_reviews / len_users))
+        print('每个 user 有 {:.2f} reviews'.format(len_reviews / len_users))
         print('products num: ', self.product_num)
         print('共有 {} 条 reviews.'.format(len_reviews))
         return reviews
@@ -349,21 +342,24 @@ class ReviewLoader:
         product_counter = Counter()
         user_counter = Counter()
         result = {}
+        next_products = []
         for i in range(self.product_num):
-            next_product, product_counter_new, user_counter_new, result_new = self.iteration(product, product_counter,
+            next_product, product_counter_new, user_counter_new, result_new = self._iteration(product, product_counter,
                                                                                         user_counter,
                                                                                         self.user2product, result,
                                                                                         candidate_products)
             if next_product != '':
                 candidate_products.remove(next_product)
+                next_products.append(next_product)
                 product = next_product
                 product_counter = product_counter_new
                 user_counter = user_counter_new
                 result = result_new
             else:
                 continue
-        result = self.remove_rare_users(result, user_counter, threshold=12)
-        reviews = self.check_efficiency(result)
+
+        result = self._remove_rare_users(result, user_counter, threshold=20)
+        reviews = self._check_efficiency(result)
         reviews = sku.shuffle(reviews)
         return reviews
 
@@ -372,7 +368,7 @@ class ReviewLoader:
         reviews = fu.load_array(path)
         return reviews
 
-    def iteration(self, product, product_counter, user_counter, user2product,
+    def _iteration(self, product, product_counter, user_counter, user2product,
                   result, candidate_products):
         reviews = self.get_product_reviews(product)
         users = self.userhelper.get_users(reviews)
@@ -396,4 +392,6 @@ class ReviewLoader:
         for product in products:
             res.append(product2idx[product])
         return np.array(res)
+
+
 

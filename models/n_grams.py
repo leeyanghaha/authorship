@@ -9,10 +9,10 @@ PED = ' '
 
 
 class Ngram(object):
-    def __init__(self, n=3):
+    def __init__(self, n=2):
         self.n = n
 
-    def character_level(self, text, n=None):
+    def character_level(self, text, n=2):
         text = PSD + text + PED
         n = self.n if n is None else n
         character_n_grams = [text[i:i+n] for i in range(len(text) - n + 1)]

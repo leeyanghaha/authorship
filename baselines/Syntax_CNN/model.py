@@ -10,37 +10,37 @@ from keras import regularizers
 import utils.key_utils as ku
 
 
-filters = 300
-kernel_size = 3
-batch_size = 32
-epochs =100
-print('kernel size: ', kernel_size)
-loss = 'categorical_crossentropy'
-
 class Net:
-    def __init__(self,max_words_num, syntax_dim, max_ngram_len, ngram_dim, voca_size,
-                 pos_type_num, out_dim, max_pos_num):
-        self.max_words_num = max_words_num
-        self.syntax_dim = syntax_dim
-        self.max_ngram_len = max_ngram_len
-        self.ngram_dim = ngram_dim
-        self.pos_type_num = pos_type_num
-        self.out_dim = out_dim
-        self.max_pos_num = max_pos_num
-        self.position_embedding = Embedding(input_dim=max_pos_num, output_dim=syntax_dim,
-                                            input_length=max_pos_num*max_words_num)
-        self.pos_type_embedding = Embedding(input_dim=pos_type_num, output_dim=syntax_dim,
-                                            input_length=max_pos_num*max_words_num)
-        self.ngram_embedding = Embedding(input_dim=voca_size, output_dim=ngram_dim,
-                                         input_length=max_ngram_len)
-        self.syntax_conv = Conv2D(filters, (kernel_size, syntax_dim), activation='relu', padding='valid')
-        self.content_conv = Conv2D(filters, (kernel_size, ngram_dim), activation='relu', padding='valid')
+    def __init__(self, **params):
+        self._check_input(**params)
+        self.position_embedding = Embedding(input_dim=self.max_pos_num, output_dim=self.syntax_dim,
+                                            input_length=self.max_pos_num*self.max_words_num)
+        self.pos_type_embedding = Embedding(input_dim=self.pos_type_num, output_dim=self.syntax_dim,
+                                            input_length=self.max_pos_num*self.max_words_num)
+        self.ngram_embedding = Embedding(input_dim=self.vocab_size, output_dim=self.ngram_dim,
+                                         input_length=self.max_ngram_len)
+        self.syntax_conv = Conv2D(self.filters, (self.kernel_size, self.syntax_dim), activation='relu', padding='valid')
+        self.content_conv = Conv2D(self.filters, (self.kernel_size, self.ngram_dim), activation='relu', padding='valid')
         self.flatten = Flatten()
         self.dropout = Dropout(0.25)
         self.slicing_lambda = Lambda(lambda x:x[:])
         self.sum_lambda = Lambda(self.reduce_sum)
         self.model = self.net()
         self.compile()
+
+    def _check_input(self, **params):
+        self.max_words_num = params[ku.max_words_num]
+        self.syntax_dim = params['syntax_dim']
+        self.max_ngram_len = params[ku.max_ngram_len]
+        self.ngram_dim = params['ngram_dim']
+        self.pos_type_num = params['pos_type_num']
+        self.out_dim = params['out_dim']
+        self.max_pos_num = params['max_pos_num']
+        self.vocab_size = params['vocab_size']
+        self.filters = params['filters']
+        self.kernel_size = params['kernel_size']
+        self.batch_size = params['batch_size']
+        self.loss = params['loss']
 
     def net(self):
         position_input = Input(shape=(self.max_words_num * self.max_pos_num, ), name='position_input')
@@ -84,14 +84,14 @@ class Net:
 
     def compile(self):
         optimizer = keras.optimizers.Adam(lr=0.0001)
-        self.model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
+        self.model.compile(optimizer=optimizer, loss=self.loss, metrics=['accuracy'])
 
     def fit(self, train_x, train_y):
         train_y = to_categorical(train_y, num_classes=self.out_dim)
-        early_stopping = EarlyStopping(monitor='val_acc', patience=5, min_delta=0.0001,
+        early_stopping = EarlyStopping(monitor='val_acc', patience=5, min_delta=0.001,
                                        mode='max')
-        self.model.fit(train_x, train_y, validation_split=0.2, batch_size=batch_size,
-                       callbacks=[early_stopping], epochs=epochs)
+        self.model.fit(train_x, train_y, validation_split=0.2, batch_size=self.batch_size,
+                       callbacks=[early_stopping], epochs=100)
 
     def reduce_sum(self, x):
         return K.sum(x, axis=2)
@@ -101,7 +101,7 @@ class Net:
 
     def evaluate(self, x, y):
         y = to_categorical(y, num_classes=self.out_dim)
-        return self.model.evaluate(x, y, batch_size=batch_size)
+        return self.model.evaluate(x, y, batch_size=self.batch_size)
 
     def load_weight(self, path):
         self.model.load_weights(path)
