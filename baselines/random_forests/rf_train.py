@@ -21,8 +21,8 @@ user2idx = userhelper.user2idx(users)
 ngram2idx = voca.character_n_gram_table(reviews, min_threshold=2)
 # voca.dump_n_grams(ngram2idx, type=ku.charngram2idx)
 
-grid_params= {'n_estimators': [500, 1000], 'criterion': ['gini'], 'max_depth': [None],
-            'min_samples_split': [2],
+grid_params= {'n_estimators': [1000], 'criterion': ['gini'], 'max_depth': [100],
+            'min_samples_split': [3],
          'min_samples_leaf': [1], 'max_features': ['sqrt'], 'max_leaf_nodes': [None],
          'min_impurity_decrease': [0.], 'random_state': [1]}
 rf_params = {'n_jobs': 10, 'verbose': 0, 'warm_start': False}

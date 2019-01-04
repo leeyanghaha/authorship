@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbe0c411-b9e2-487f-963a-e8c2ade95d1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/baselines/gbdt/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/gbdt/data_process.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/gbdt/gbdt_train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/gcforest/gc_train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/only_product/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/only_product/data_process.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/only_product/only_product_train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/product_embeds/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/product_embeds/embeds_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/product_embeds/embeds_train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/product_embeds/product_process.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/product_embeds/walker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/random_forests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/random_forests/data_process.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/random_forests/rf_train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/only_product_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_method/self_regulation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/AA_of_MM/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/AA_of_MM/data_process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/Syntax_CNN/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/Syntax_CNN/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/n_grams.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/n_grams.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/text_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/text_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/text_cnn_product.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/text_cnn_product.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_method/graft.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/graft.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_method/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/data_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/key_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/key_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baselines/random_forests/rf_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/random_forests/rf_train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,44 +45,44 @@
     <session id="979711413">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="39" />
+          <entry key="project.closed" value="41" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="5" />
+          <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="16" />
-          <entry key="project.open.time.9" value="16" />
-          <entry key="project.opened" value="46" />
+          <entry key="project.open.time.9" value="17" />
+          <entry key="project.opened" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="_bootstrap&gt;" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="417" />
-          <entry key="txt" value="2" />
+          <entry key="py" value="419" />
+          <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="PyRemoteDebug" value="1" />
-          <entry key="Python" value="417" />
+          <entry key="Python" value="419" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="139" />
-          <entry key="py" value="133601" />
+          <entry key="py" value="133665" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="139" />
-          <entry key="Python" value="133601" />
+          <entry key="Python" value="133665" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -123,47 +95,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselines/only_product/only_product_train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="99" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="127" column="54" lean-forward="true" selection-start-line="127" selection-start-column="54" selection-end-line="127" selection-end-column="54" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-                <marker date="1545984091365" expanded="true" signature="5131:5132" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_method/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-108">
-              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#65#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/only_product_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="27" column="78" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="27" selection-end-column="78" />
+            <state relative-caret-position="540">
+              <caret line="27" column="78" selection-start-line="26" selection-start-column="21" selection-end-line="27" selection-end-column="78" />
               <folding>
                 <element signature="e#0#117#0" expanded="true" />
                 <marker date="1545987606717" expanded="true" signature="321:326" ph="..." />
@@ -175,7 +110,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/only_product/data_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
+            <state relative-caret-position="837">
               <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
@@ -187,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2403">
+            <state relative-caret-position="2187">
               <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
               <folding>
                 <element signature="e#0#136#0" expanded="true" />
@@ -199,17 +134,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-514">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="81">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="61" column="58" selection-start-line="61" selection-start-column="58" selection-end-line="61" selection-end-column="58" />
+            <state relative-caret-position="2187">
+              <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
               <folding>
                 <element signature="e#0#127#0" expanded="true" />
               </folding>
@@ -218,9 +153,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="54">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
@@ -232,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/product_embeds/product_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="57" column="53" lean-forward="true" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+            <state relative-caret-position="1431">
+              <caret line="57" column="53" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <marker date="1545986743940" expanded="true" signature="1523:1825" ph="..." />
@@ -319,7 +272,6 @@
         <option value="$PROJECT_DIR$/models/n_grams.py" />
         <option value="$PROJECT_DIR$/models/text_cnn.py" />
         <option value="$PROJECT_DIR$/utils/data_utils.py" />
-        <option value="$PROJECT_DIR$/baselines/random_forests/rf_train.py" />
         <option value="$PROJECT_DIR$/baselines/only_product/only_product_dl.py" />
         <option value="$PROJECT_DIR$/baselines/only_product/data_process.py" />
         <option value="$PROJECT_DIR$/models/skip_gram.py" />
@@ -335,6 +287,7 @@
         <option value="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" />
         <option value="$PROJECT_DIR$/my_method/main.py" />
         <option value="$PROJECT_DIR$/models/text_cnn_product.py" />
+        <option value="$PROJECT_DIR$/baselines/random_forests/rf_train.py" />
       </list>
     </option>
   </component>
@@ -368,35 +321,18 @@
             <path>
               <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
               <item name="authorship" type="462c0819:PsiDirectoryNode" />
-              <item name="baselines" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
-              <item name="authorship" type="462c0819:PsiDirectoryNode" />
-              <item name="baselines" type="462c0819:PsiDirectoryNode" />
-              <item name="CNN_AST" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
-              <item name="authorship" type="462c0819:PsiDirectoryNode" />
-              <item name="baselines" type="462c0819:PsiDirectoryNode" />
-              <item name="only_product" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
-              <item name="authorship" type="462c0819:PsiDirectoryNode" />
-              <item name="baselines" type="462c0819:PsiDirectoryNode" />
-              <item name="product_embeds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
-              <item name="authorship" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
               <item name="authorship" type="462c0819:PsiDirectoryNode" />
               <item name="my_method" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="my_method" type="462c0819:PsiDirectoryNode" />
+              <item name="bert" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
@@ -457,6 +393,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
       </envs>
       <option name="SDK_HOME" value="" />
@@ -609,7 +546,7 @@
     <frame x="-6" y="-6" width="1381" height="895" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.18745276" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.19349962" />
       <window_info id="Structure" order="1" sideWeight="0.5019531" side_tool="true" weight="0.18442933" />
       <window_info id="Favorites" order="2" sideWeight="0.50199735" side_tool="true" weight="0.14255014" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -621,7 +558,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49811035" weight="0.32490012" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49811035" weight="0.32372215" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50358164" side_tool="true" weight="0.35666218" />
@@ -632,7 +569,7 @@
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.49609375" weight="0.32955405" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" weight="0.0057306592" />
+      <window_info anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.005291005" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.17765044" />
@@ -678,13 +615,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/my_method/data_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/keras/engine/training_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1673">
@@ -853,13 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/-520390954/posixpath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -893,16 +816,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/skip_gram.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/models/skip_gram.py" />
     <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
@@ -910,21 +824,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/only_product/product_embeds_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/only_product/product_embeds_train.py" />
     <entry file="file://$PROJECT_DIR$/my_method/graft.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <marker date="1545981208911" expanded="true" signature="146:209" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -932,15 +836,91 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="33" column="34" lean-forward="true" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/only_product/only_product_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3240">
+          <caret line="127" column="54" selection-start-line="127" selection-start-column="54" selection-end-line="127" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#65#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/only_product_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" column="78" selection-start-line="26" selection-start-column="21" selection-end-line="27" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#117#0" expanded="true" />
+            <marker date="1545987606717" expanded="true" signature="321:326" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/only_product/data_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2187">
+          <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#136#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2187">
+          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="54">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
@@ -950,8 +930,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/baselines/product_embeds/product_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="57" column="53" lean-forward="true" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+        <state relative-caret-position="1431">
+          <caret line="57" column="53" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <marker date="1545986743940" expanded="true" signature="1523:1825" ph="..." />
@@ -959,82 +939,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/only_product/data_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/only_product/only_product_train.py">
+    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="99" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-514">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="127" column="54" lean-forward="true" selection-start-line="127" selection-start-column="54" selection-end-line="127" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1545984091365" expanded="true" signature="5131:5132" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2403">
-          <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#136#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/only_product_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="27" column="78" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="27" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#117#0" expanded="true" />
-            <marker date="1545987606717" expanded="true" signature="321:326" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="61" column="58" selection-start-line="61" selection-start-column="58" selection-end-line="61" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#127#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="660">
+          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
         </state>
       </provider>
     </entry>
