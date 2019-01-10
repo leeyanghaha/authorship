@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbe0c411-b9e2-487f-963a-e8c2ade95d1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/my_method/bert/data_prepare.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_method/bert/graft.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_method/bert/my_classifier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_method/capsules/input_data/review/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_method/capsules/input_data/review/review_input_record.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_method/capsules/my_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/random_forests/rf_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/random_forests/rf_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_method/bert/run_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/bert/run_classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_method/graft.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/graft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/data_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,32 +23,38 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/authorship$review_input.coverage" NAME="review_input Coverage Results" MODIFIED="1546841161821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/capsules/input_data/review" />
     <SUITE FILE_PATH="coverage/authorship$data_process.coverage" NAME="data_process Coverage Results" MODIFIED="1543981188439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$lda_graft.coverage" NAME="lda_graft Coverage Results" MODIFIED="1543548633928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/LDAH_S" />
     <SUITE FILE_PATH="coverage/authorship$vocabulary__1_.coverage" NAME="vocabulary (1) Coverage Results" MODIFIED="1542272356381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
     <SUITE FILE_PATH="coverage/authorship$train.coverage" NAME="train Coverage Results" MODIFIED="1543050107673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax_CNN" />
+    <SUITE FILE_PATH="coverage/authorship$my_experiment.coverage" NAME="my_experiment Coverage Results" MODIFIED="1547028428775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/capsules" />
     <SUITE FILE_PATH="coverage/authorship$self_regulation.coverage" NAME="self_regulation Coverage Results" MODIFIED="1544854458152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$train_scnn.coverage" NAME="train_scnn Coverage Results" MODIFIED="1544166684605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax_CNN" />
     <SUITE FILE_PATH="coverage/authorship$product_embeds_train.coverage" NAME="product_embeds_train Coverage Results" MODIFIED="1545907595191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/only_product" />
+    <SUITE FILE_PATH="coverage/authorship$run_classifier.coverage" NAME="run_classifier Coverage Results" MODIFIED="1546593605796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/bert" />
+    <SUITE FILE_PATH="coverage/authorship$my_classifier.coverage" NAME="my_classifier Coverage Results" MODIFIED="1546602940250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/bert" />
     <SUITE FILE_PATH="coverage/authorship$n_grams.coverage" NAME="n_grams Coverage Results" MODIFIED="1542266621295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
-    <SUITE FILE_PATH="coverage/authorship$graft__1_.coverage" NAME="graft (1) Coverage Results" MODIFIED="1543041487416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax-CNN" />
     <SUITE FILE_PATH="coverage/authorship$data.coverage" NAME="data Coverage Results" MODIFIED="1544671138219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
-    <SUITE FILE_PATH="coverage/authorship$graft.coverage" NAME="graft Coverage Results" MODIFIED="1545981210539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
+    <SUITE FILE_PATH="coverage/authorship$graft__1_.coverage" NAME="graft (1) Coverage Results" MODIFIED="1546593399827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/bert" />
+    <SUITE FILE_PATH="coverage/authorship$graft.coverage" NAME="graft Coverage Results" MODIFIED="1547095100225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$keras_model.coverage" NAME="keras_model Coverage Results" MODIFIED="1543206873997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
     <SUITE FILE_PATH="coverage/authorship$vocabulary.coverage" NAME="vocabulary Coverage Results" MODIFIED="1542270792581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
     <SUITE FILE_PATH="coverage/authorship$only_product_dl.coverage" NAME="only_product_dl Coverage Results" MODIFIED="1545879589791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/only_product" />
     <SUITE FILE_PATH="coverage/authorship$rf_train.coverage" NAME="rf_train Coverage Results" MODIFIED="1545819390221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/random_forests" />
-    <SUITE FILE_PATH="coverage/authorship$keras_CNN_train.coverage" NAME="keras_CNN_train Coverage Results" MODIFIED="1545276834136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
+    <SUITE FILE_PATH="coverage/authorship$keras_CNN_train.coverage" NAME="keras_CNN_train Coverage Results" MODIFIED="1547040997842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
+    <SUITE FILE_PATH="coverage/authorship$data_prepare.coverage" NAME="data_prepare Coverage Results" MODIFIED="1546602960745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/bert" />
     <SUITE FILE_PATH="coverage/authorship$lh_graft.coverage" NAME="lh_graft Coverage Results" MODIFIED="1543474726113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/LH" />
     <SUITE FILE_PATH="coverage/authorship$embeds_train.coverage" NAME="embeds_train Coverage Results" MODIFIED="1545982296711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/product_embeds" />
     <SUITE FILE_PATH="coverage/authorship$photo_utils.coverage" NAME="photo_utils Coverage Results" MODIFIED="1544012794592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/authorship$main.coverage" NAME="main Coverage Results" MODIFIED="1545584797901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$LDAHS_train.coverage" NAME="LDAHS_train Coverage Results" MODIFIED="1543762158748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/LDAH_S" />
-    <SUITE FILE_PATH="coverage/authorship$AA_of_MMtrain.coverage" NAME="AA_of_MMtrain Coverage Results" MODIFIED="1544748977241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
+    <SUITE FILE_PATH="coverage/authorship$AA_of_MMtrain.coverage" NAME="AA_of_MMtrain Coverage Results" MODIFIED="1547041142789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
     <SUITE FILE_PATH="coverage/authorship$gc_train.coverage" NAME="gc_train Coverage Results" MODIFIED="1545204987389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/gcforest" />
     <SUITE FILE_PATH="coverage/authorship$twitter_data_utils.coverage" NAME="twitter_data_utils Coverage Results" MODIFIED="1543889886774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/authorship$only_product_train.coverage" NAME="only_product_train Coverage Results" MODIFIED="1545988642047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/only_product" />
     <SUITE FILE_PATH="coverage/authorship$graft__2_.coverage" NAME="graft (2) Coverage Results" MODIFIED="1543130695910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/Syntax_CNN" />
+    <SUITE FILE_PATH="coverage/authorship$review_input_record.coverage" NAME="review_input_record Coverage Results" MODIFIED="1547033827827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/capsules/input_data/review" />
     <SUITE FILE_PATH="coverage/authorship$data_utils.coverage" NAME="data_utils Coverage Results" MODIFIED="1542280409547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/authorship$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1543158539923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
   </component>
@@ -45,44 +62,47 @@
     <session id="979711413">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="41" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="6" />
-          <entry key="project.open.time.11" value="3" />
-          <entry key="project.open.time.12" value="1" />
+          <entry key="project.closed" value="53" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.10" value="7" />
+          <entry key="project.open.time.11" value="5" />
+          <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="16" />
-          <entry key="project.open.time.9" value="17" />
-          <entry key="project.opened" value="48" />
+          <entry key="project.open.time.9" value="20" />
+          <entry key="project.opened" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="LICENSE" value="1" />
           <entry key="_bootstrap&gt;" value="1" />
-          <entry key="md" value="1" />
-          <entry key="py" value="419" />
+          <entry key="md" value="2" />
+          <entry key="py" value="505" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Markdown" value="2" />
+          <entry key="PLAIN_TEXT" value="4" />
           <entry key="PyRemoteDebug" value="1" />
-          <entry key="Python" value="419" />
+          <entry key="Python" value="505" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="139" />
-          <entry key="py" value="133665" />
+          <entry key="dummy" value="146" />
+          <entry key="py" value="153968" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="139" />
-          <entry key="Python" value="133665" />
+          <entry key="PLAIN_TEXT" value="146" />
+          <entry key="Python" value="153968" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -95,37 +115,26 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/only_product_model.py">
+        <entry file="file://$PROJECT_DIR$/my_method/capsules/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="27" column="78" selection-start-line="26" selection-start-column="21" selection-end-line="27" selection-end-column="78" />
+            <state relative-caret-position="-4029">
+              <caret line="276" column="17" lean-forward="true" selection-start-line="276" selection-start-column="17" selection-end-line="276" selection-end-column="17" />
               <folding>
-                <element signature="e#0#117#0" expanded="true" />
-                <marker date="1545987606717" expanded="true" signature="321:326" ph="..." />
+                <element signature="e#743#752#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselines/only_product/data_process.py">
+        <entry file="file://$PROJECT_DIR$/my_method/capsules/my_experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="837">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+            <state relative-caret-position="291">
+              <caret line="257" column="32" lean-forward="true" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
               <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2187">
-              <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#136#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1547113098107" expanded="true" signature="1549:11140" ph="..." />
+                <marker date="1547113098107" expanded="true" signature="1768:11140" ph="..." />
               </folding>
             </state>
           </provider>
@@ -134,62 +143,83 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2187">
-              <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+            <state relative-caret-position="27">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
-                <element signature="e#0#127#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
+        <entry file="file://$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="459">
+              <caret line="71" column="20" lean-forward="true" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_method/capsules/models/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="187" column="35" lean-forward="true" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
+        <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+            <state relative-caret-position="243">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_train.py">
+        <entry file="file://$PROJECT_DIR$/my_method/capsules/models/capsule_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="254">
+              <caret line="186" column="63" lean-forward="true" selection-start-line="186" selection-start-column="63" selection-end-line="186" selection-end-column="63" />
               <folding>
-                <element signature="e#0#65#0" expanded="true" />
+                <element signature="e#769#807#0" expanded="true" />
+                <marker date="1547111613264" expanded="true" signature="6082:6173" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselines/product_embeds/product_process.py">
+        <entry file="file://$PROJECT_DIR$/my_method/capsules/models/layers/layers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1431">
-              <caret line="57" column="53" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+            <state relative-caret-position="-1015">
+              <caret line="365" column="4" selection-start-line="365" selection-start-column="4" selection-end-line="365" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/data_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6804">
+              <caret line="264" column="31" selection-start-line="264" selection-start-column="31" selection-end-line="264" selection-end-column="31" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1545986743940" expanded="true" signature="1523:1825" ph="..." />
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_method/graft.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="837">
+              <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -222,6 +252,12 @@
       <find>next</find>
       <find>print</find>
       <find>simulate</find>
+      <find>task_name</find>
+      <find>feature_la</find>
+      <find>mult</find>
+      <find>hparams</find>
+      <find>_singke</find>
+      <find>rema</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -237,27 +273,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/baselines/AA_of_MM/data.py" />
-        <option value="$PROJECT_DIR$/utils/twitter_data_utils.py" />
-        <option value="$PROJECT_DIR$/baselines/Syntax_CNN/data.py" />
-        <option value="$PROJECT_DIR$/utils/pattern_utils.py" />
-        <option value="$PROJECT_DIR$/baselines/AA_of_MM/graft.py" />
-        <option value="$PROJECT_DIR$/baselines/CNN_AST/model.py" />
-        <option value="$PROJECT_DIR$/models/text-cnn.py" />
-        <option value="$PROJECT_DIR$/utils/function_utils.py" />
-        <option value="$PROJECT_DIR$/utils/photo_utils.py" />
-        <option value="$PROJECT_DIR$/../tweetspider/graft.py" />
-        <option value="$USER_HOME$/Desktop/a.py" />
-        <option value="$PROJECT_DIR$/models/text_cnn_concat_resnet.py" />
-        <option value="$PROJECT_DIR$/my_method/data.py" />
-        <option value="$PROJECT_DIR$/baselines/CNN_AST/data_process.py" />
-        <option value="$PROJECT_DIR$/utils/vocabulary_utils.py" />
-        <option value="$PROJECT_DIR$/my_method/data_process.py" />
-        <option value="$PROJECT_DIR$/baselines/AA_of_MM/data_process.py" />
-        <option value="$PROJECT_DIR$/my_method/SVM_product.py" />
-        <option value="$PROJECT_DIR$/my_method/self_regulation.py" />
         <option value="$PROJECT_DIR$/my_method/random_forest.py" />
-        <option value="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" />
         <option value="$PROJECT_DIR$/baselines/random_forests/data_process.py" />
         <option value="$PROJECT_DIR$/baselines/gbdt/data_process.py" />
         <option value="$PROJECT_DIR$/baselines/gbdt/gbdt_train.py" />
@@ -265,29 +281,49 @@
         <option value="$PROJECT_DIR$/baselines/gcforest/cascade/cascade_classifier.py" />
         <option value="$PROJECT_DIR$/baselines/gcforest/gc_train.py" />
         <option value="$PROJECT_DIR$/utils/tensorboard.py" />
-        <option value="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" />
         <option value="$PROJECT_DIR$/baselines/Syntax_CNN/model.py" />
         <option value="$PROJECT_DIR$/baselines/fastCNN/fast_train.py" />
         <option value="$PROJECT_DIR$/baselines/fastCNN/pretrain_ngram.py" />
         <option value="$PROJECT_DIR$/models/n_grams.py" />
         <option value="$PROJECT_DIR$/models/text_cnn.py" />
-        <option value="$PROJECT_DIR$/utils/data_utils.py" />
         <option value="$PROJECT_DIR$/baselines/only_product/only_product_dl.py" />
         <option value="$PROJECT_DIR$/baselines/only_product/data_process.py" />
         <option value="$PROJECT_DIR$/models/skip_gram.py" />
         <option value="$PROJECT_DIR$/baselines/only_product/product_embeds_train.py" />
         <option value="$PROJECT_DIR$/baselines/product_embeds/worker.py" />
-        <option value="$PROJECT_DIR$/utils/key_utils.py" />
-        <option value="$PROJECT_DIR$/my_method/graft.py" />
         <option value="$PROJECT_DIR$/baselines/product_embeds/embeds_model.py" />
         <option value="$PROJECT_DIR$/baselines/product_embeds/embeds_train.py" />
         <option value="$PROJECT_DIR$/baselines/product_embeds/product_process.py" />
         <option value="$PROJECT_DIR$/models/only_product_model.py" />
         <option value="$PROJECT_DIR$/baselines/only_product/only_product_train.py" />
-        <option value="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" />
         <option value="$PROJECT_DIR$/my_method/main.py" />
         <option value="$PROJECT_DIR$/models/text_cnn_product.py" />
+        <option value="$PROJECT_DIR$/utils/key_utils.py" />
+        <option value="$PROJECT_DIR$/my_method/bert/graft.py" />
+        <option value="$PROJECT_DIR$/my_method/bert/run_classifier.py" />
         <option value="$PROJECT_DIR$/baselines/random_forests/rf_train.py" />
+        <option value="$PROJECT_DIR$/my_method/bert/my_classifier.py" />
+        <option value="$PROJECT_DIR$/my_method/bert/data_prepare.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/input_data/review/review_input.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/models/capsule_model_test.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/models/conv_model.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/models/conv_model_test.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/models/model_test.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/input_data/norb/norb_input_record_test.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/input_data/mnist/mnist_input_record_test.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/input_data/mnist/mnist_shift_test.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/input_data/cifar10/cifar10_input_test.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/experiment.py" />
+        <option value="$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py" />
+        <option value="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" />
+        <option value="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" />
+        <option value="$PROJECT_DIR$/utils/data_utils.py" />
+        <option value="$PROJECT_DIR$/my_method/graft.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/input_data/review/review_input_record.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/models/layers/layers.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/models/model.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/models/capsule_model.py" />
+        <option value="$PROJECT_DIR$/my_method/capsules/my_experiment.py" />
       </list>
     </option>
   </component>
@@ -298,9 +334,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-14" />
-    <option name="width" value="1468" />
-    <option name="height" value="1754" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1456" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -321,6 +358,29 @@
             <path>
               <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
               <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="baselines" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="baselines" type="462c0819:PsiDirectoryNode" />
+              <item name="AA_of_MM" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="baselines" type="462c0819:PsiDirectoryNode" />
+              <item name="CNN_AST" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="baselines" type="462c0819:PsiDirectoryNode" />
+              <item name="Syntax_CNN" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -332,7 +392,29 @@
               <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
               <item name="authorship" type="462c0819:PsiDirectoryNode" />
               <item name="my_method" type="462c0819:PsiDirectoryNode" />
-              <item name="bert" type="462c0819:PsiDirectoryNode" />
+              <item name="capsules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="my_method" type="462c0819:PsiDirectoryNode" />
+              <item name="capsules" type="462c0819:PsiDirectoryNode" />
+              <item name="input_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="my_method" type="462c0819:PsiDirectoryNode" />
+              <item name="capsules" type="462c0819:PsiDirectoryNode" />
+              <item name="input_data" type="462c0819:PsiDirectoryNode" />
+              <item name="review" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
+              <item name="authorship" type="462c0819:PsiDirectoryNode" />
+              <item name="my_method" type="462c0819:PsiDirectoryNode" />
+              <item name="capsules" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="authorship" type="b2602c69:ProjectViewProjectNode" />
@@ -346,12 +428,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/code/authorship/utils/pattern_utils.py" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/code/authorship/my_method/capsules/experiment.py" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MWP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -365,7 +447,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.only_product_train">
+  <component name="RunManager" selected="Python.graft">
+    <configuration name="AA_of_MMtrain" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="authorship" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/AA_of_MM" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="authorship" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -382,29 +486,6 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="embeds_train" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="authorship" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/product_embeds" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baselines/product_embeds/embeds_train.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -434,21 +515,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="only_product_dl" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="keras_CNN_train" type="PythonConfigurationType" factoryName="Python">
       <module name="authorship" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
+        <env name=" LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/only_product" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/CNN_AST" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\code\authorship\baselines\only_product\only_product_train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -457,30 +538,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="only_product_train" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="authorship" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="false" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/only_product" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baselines/only_product/only_product_train.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="product_embeds_train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="my_experiment" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="authorship" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -489,12 +547,58 @@
         <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baselines/only_product" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/my_method/capsules" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baselines/only_product/product_embeds_train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_method/capsules/my_experiment.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="review_input" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="authorship" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/my_method/capsules/input_data/review" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\code\authorship\my_method\capsules\input_data\review\review_input_record.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="review_input_record" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="authorship" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name=" LD_LIBRARY_PATH" value="/usr/local/cuda/lib64" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/my_method/capsules/input_data/review" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_method/capsules/input_data/review/review_input_record.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -504,19 +608,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.only_product_train" />
+      <item itemvalue="Python.keras_CNN_train" />
+      <item itemvalue="Python.review_input" />
       <item itemvalue="Python.graft" />
-      <item itemvalue="Python.only_product_dl" />
-      <item itemvalue="Python.product_embeds_train" />
-      <item itemvalue="Python.embeds_train" />
+      <item itemvalue="Python.my_experiment" />
+      <item itemvalue="Python.review_input_record" />
+      <item itemvalue="Python.AA_of_MMtrain" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.only_product_train" />
-        <item itemvalue="Python.embeds_train" />
         <item itemvalue="Python.graft" />
-        <item itemvalue="Python.product_embeds_train" />
-        <item itemvalue="Python.only_product_dl" />
+        <item itemvalue="Python.AA_of_MMtrain" />
+        <item itemvalue="Python.review_input_record" />
+        <item itemvalue="Python.my_experiment" />
+        <item itemvalue="Python.review_input" />
       </list>
     </recent_temporary>
   </component>
@@ -546,56 +651,56 @@
     <frame x="-6" y="-6" width="1381" height="895" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.19349962" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.21768707" />
       <window_info id="Structure" order="1" sideWeight="0.5019531" side_tool="true" weight="0.18442933" />
       <window_info id="Favorites" order="2" sideWeight="0.50199735" side_tool="true" weight="0.14255014" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32756326" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49641833" weight="0.3648469" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3981358" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3270525" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49641833" weight="0.36173" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39703903" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49811035" weight="0.32372215" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49811035" weight="0.32110092" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50358164" side_tool="true" weight="0.35666218" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32490012" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32110092" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.49609375" weight="0.32955405" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.005291005" />
+      <window_info anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.0022675737" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.17765044" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.18624642" />
       <window_info id="Structure" order="1" sideWeight="0.5019531" side_tool="true" weight="0.18442933" />
       <window_info id="Favorites" order="2" sideWeight="0.50199735" side_tool="true" weight="0.14255014" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32756326" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49641833" weight="0.3648469" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49641833" weight="0.36339167" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3981358" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49811035" weight="0.32490012" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49811035" weight="0.32166892" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50358164" side_tool="true" weight="0.35666218" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32490012" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.3230148" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.49609375" weight="0.32955405" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.0057306592" />
+      <window_info active="true" anchor="right" x="0" y="0" width="295" height="695" id="Documentation" order="6" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.003581662" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,254 +717,42 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/keras/engine/training_utils.py">
+    <entry file="file://$PROJECT_DIR$/baselines/product_embeds/product_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1673">
-          <caret line="93" column="26" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
+        <state relative-caret-position="1431">
+          <caret line="57" column="53" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/keras/engine/training.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="783" column="31" selection-start-line="783" selection-start-column="31" selection-end-line="783" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/keras/backend/tensorflow_backend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="2654" selection-start-line="2654" selection-end-line="2654" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/self_regulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3861">
-          <caret line="152" selection-start-line="152" selection-end-line="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/random_forest.py" />
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/sklearn/model_selection/_search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="1077" selection-start-line="1077" selection-end-line="1077" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/random_forests/data_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../gcForest_v1.0.1/gcForest-master/lib/gcforest/layers/base_layer.py" />
-    <entry file="file://$PROJECT_DIR$/baselines/gbdt/data_process.py">
+    <entry file="file://$PROJECT_DIR$/my_method/bert/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/config.py">
+    <entry file="file://$PROJECT_DIR$/my_method/bert/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+        <state relative-caret-position="-4860" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gbdt/gbdt_train.py">
+    <entry file="file://$PROJECT_DIR$/baselines/only_product/data_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/utils/win_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/data_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="8" selection-start-line="8" selection-end-line="17" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="27">
-            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/cascade/cascade_classifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/estimators/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/estimators/base_estimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/estimators/sklearn_estimators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/GcForest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/tensorboard_utils.py" />
-    <entry file="file://$PROJECT_DIR$/baselines/gcforest/gc_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="39" column="49" lean-forward="true" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/fastCNN/fast_train.py" />
-    <entry file="file://$PROJECT_DIR$/baselines/Syntax_CNN/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="16" column="59" lean-forward="true" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/fastCNN/pretrain_ngram.py" />
-    <entry file="file://$PROJECT_DIR$/models/n_grams.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="24" column="52" lean-forward="true" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/data_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/-520390954/posixpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/function_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/-520390954/collections/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="609" selection-start-line="609" selection-end-line="609" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="323" column="20" selection-start-line="323" selection-start-column="20" selection-end-line="323" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1545808737528" expanded="true" signature="1370:1373" ph="..." />
-            <marker date="1545808737528" expanded="true" signature="6781:9896" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/skip_gram.py" />
-    <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/only_product/product_embeds_train.py" />
-    <entry file="file://$PROJECT_DIR$/my_method/graft.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/product_embeds/walker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="33" column="34" lean-forward="true" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/only_product/only_product_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3240">
-          <caret line="127" column="54" selection-start-line="127" selection-start-column="54" selection-end-line="127" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="659">
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -867,85 +760,333 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="27" column="78" selection-start-line="26" selection-start-column="21" selection-end-line="27" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/modeling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1917">
+          <caret line="81" column="27" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/graft.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/run_pretraining.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6804" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/data_prepare.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/run_classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/my_classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/extract_features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1431">
+          <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/tokenization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4401">
+          <caret line="171" column="52" selection-start-line="171" selection-start-column="52" selection-end-line="171" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/random_forests/data_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/layers/variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2808">
+          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/-1472629238/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="3598" column="8" selection-start-line="3598" selection-start-column="8" selection-end-line="3598" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/Syntax_CNN/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/n_grams.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="24" column="52" lean-forward="true" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/capsule_model_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/conv_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/conv_model_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/norb/norb_input_record_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/mnist/mnist_shift_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/cifar10/cifar10_input.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/cifar10/cifar10_input_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/mnist/mnist_shift.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-243" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/mnist/mnist_input_record_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/norb/norb_input_record.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/model_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/tensorflow/python/data/ops/iterator_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="560" column="34" selection-start-line="560" selection-start-column="34" selection-end-line="560" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/tensorflow/python/data/ops/dataset_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41499">
+          <caret line="1570" column="59" selection-start-line="1570" selection-start-column="59" selection-end-line="1570" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/tensorflow/python/training/input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="1251" selection-start-line="1251" selection-end-line="1251" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/remote_sources/-1472629238/670303546/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="1318" selection-start-line="1318" selection-end-line="1318" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/mnist/mnist_input_record.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="45" column="30" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/input_data/review/review_input_record.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
           <folding>
-            <element signature="e#0#117#0" expanded="true" />
-            <marker date="1545987606717" expanded="true" signature="321:326" ph="..." />
+            <element signature="e#0#23#0" expanded="true" />
+            <marker date="1547102237673" expanded="true" signature="1151:1153" ph="..." />
+            <marker date="1547102237673" expanded="true" signature="1186:1191" ph="..." />
+            <marker date="1547102237673" expanded="true" signature="1186:1212" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/only_product/data_process.py">
+    <entry file="file://$PROJECT_DIR$/utils/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6804">
+          <caret line="264" column="31" selection-start-line="264" selection-start-column="31" selection-end-line="264" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/graft.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="837">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
           <folding>
-            <element signature="e#0#66#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/layers/layers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2187">
-          <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+        <state relative-caret-position="-1015">
+          <caret line="365" column="4" selection-start-line="365" selection-start-column="4" selection-end-line="365" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/capsule_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="186" column="63" lean-forward="true" selection-start-line="186" selection-start-column="63" selection-end-line="186" selection-end-column="63" />
           <folding>
-            <element signature="e#0#136#0" expanded="true" />
+            <element signature="e#769#807#0" expanded="true" />
+            <marker date="1547111613264" expanded="true" signature="6082:6173" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/models/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="187" column="35" lean-forward="true" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4029">
+          <caret line="276" column="17" lean-forward="true" selection-start-line="276" selection-start-column="17" selection-end-line="276" selection-end-column="17" />
+          <folding>
+            <element signature="e#743#752#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/capsules/my_experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="257" column="32" lean-forward="true" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1547113098107" expanded="true" signature="1549:11140" ph="..." />
+            <marker date="1547113098107" expanded="true" signature="1768:11140" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/text_cnn_product.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2187">
-          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+        <state relative-caret-position="27">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
-            <element signature="e#0#127#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
+    <entry file="file://$PROJECT_DIR$/baselines/Syntax_CNN/train_scnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="459">
+          <caret line="71" column="20" lean-forward="true" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/product_embeds/embeds_train.py">
+    <entry file="file://$PROJECT_DIR$/models/text_cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/product_embeds/product_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1431">
-          <caret line="57" column="53" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1545986743940" expanded="true" signature="1523:1825" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/bert/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+        <state relative-caret-position="243">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>

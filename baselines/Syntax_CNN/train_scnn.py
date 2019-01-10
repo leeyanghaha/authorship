@@ -18,7 +18,7 @@ epoch = 100
 voca = Vocabulary(ku.voca_root)
 userhelper = UserHelper()
 
-reviews  = ReviewLoader(ku.Movie, product_num=50).get_data()
+reviews  = ReviewLoader(ku.Movie, product_num=100).get_data()
 
 users = userhelper.get_users(reviews)
 #

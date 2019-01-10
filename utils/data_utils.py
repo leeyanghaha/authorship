@@ -264,7 +264,7 @@ class FeatureLoader:
     def load_n_gram_idx_feature_label(self, data_arr):
         text_list, y = self.load_labeled_data(data_arr)
         sample_num = len(text_list)
-        x = np.zeros((sample_num, self.max_ngram_len), dtype=np.uint32)
+        x = np.zeros((sample_num, self.max_ngram_len), dtype=np.int32)
         for idx, text in enumerate(text_list):
             text_ngram_id = self.datahelper.text2ngramid(text, self.ngram2idx, padding=True, max_len=self.max_ngram_len)
             x[idx, :] = text_ngram_id
