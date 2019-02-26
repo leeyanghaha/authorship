@@ -2,15 +2,30 @@ import utils.key_utils as ku
 import utils.function_utils as fu
 from utils.multiprocess_utils import Multiprocess
 import sklearn.utils as sku
-from models.n_grams import Ngram
 from collections import  Counter
 from scipy import sparse
 import numpy as np
-import spacy
 import os
-from keras.utils.np_utils import to_categorical
-import utils.photo_utils as phu
-import json
+from sklearn.feature_extraction.text import CountVectorizer
+
+
+class Ngram(object):
+    def __init__(self, n=3):
+        self.n = n
+
+    def character_level(self, text, n=3):
+        PSD = ' '
+        PED = ' '
+        text = PSD + text + PED
+        n = self.n if n is None else n
+        character_n_grams = [text[i:i+n] for i in range(len(text) - n + 1)]
+        return character_n_grams
+
+    def word_level(self, text, n=2):
+        ngram_vector = CountVectorizer(ngram_range=(n, n), decode_error='ignore',
+                                       token_pattern=r'\b\w+\b', min_df=1)
+        ngram_vector.fit_transform([text])
+        return list(ngram_vector.vocabulary_.keys())
 
 
 class SyntaxPathHolder:
@@ -111,14 +126,12 @@ class DataHelper:
                 text_id.append(ku.PAD)
         return text_id
 
-
     def product2idx(self, products):
         res = {}
         asin = set(products)
         for idx, item in enumerate(asin):
             res.update({item: idx})
         return res
-
 
     def load_products_id(self, products, product2idx):
         res = []
@@ -163,58 +176,58 @@ def syntax_tree(nlp, text, pos2idx):
     return pos_id
 
 
-class ItemLoader():
-    def __init__(self, data_arr, user2idx, ngram2idx, pos2idx, max_ngram_num,
-                 max_pos_num, max_words_num ):
-        self.data_arr = data_arr
-        self.user2idx = user2idx
-        self.ngram2idx = ngram2idx
-        self.pos2idx = pos2idx
-        self.max_ngram_num = max_ngram_num
-        self.max_pos_num = max_pos_num
-        self.max_words_num = max_words_num
-        self.nlp = spacy.load('en')
-        self.datahelper = DataHelper()
-
-    def get_pos_id(self, text, max_words_num, max_pos_num):
-        '''
-        return 一个list的list, 其中每个list 代表一条 syntax path , len: len(tokenize(text))
-        :param text:
-        :return:
-        '''
-        pos_id = np.zeros((max_words_num, max_pos_num), dtype=np.uint32)
-        text_pos_list = syntax_tree(self.nlp, text, self.pos2idx)
-        words_len = len(text_pos_list)
-        for i in range(pos_id.shape[0]):
-            if i < words_len:
-                word_path = self.datahelper.padding(text_pos_list[i], max_pos_num)
-            else:
-                word_path = [ku.PAD for _ in range(max_pos_num)]
-            pos_id[i, :] = word_path
-        return pos_id
-
-    def get_position_id(self, pos_id):
-        position_id = np.zeros((pos_id.shape[0], pos_id.shape[1]), dtype=np.uint32)
-        for i in range(pos_id.shape[0]):
-            position_i = [j+1 for j in range(len(pos_id[i, :])) if pos_id[i, j] != ku.PAD]
-            position_i = self.datahelper.padding(position_i, position_id.shape[1])
-            position_id[i, :] = position_i
-        return position_id
-
-    def __len__(self):
-        return len(self.data_arr)
-
-    def __getitem__(self, idx):
-        item = self.data_arr[idx]
-        user = item[ku.reviewer_ID]
-        text_key = ku.review_text
-        text_n_grams = self.datahelper.text2ngramid(item[text_key], self.ngram2idx)
-        user_id = self.user2idx[user]
-        ngram_id = self.datahelper.padding(text_n_grams, self.max_ngram_num)
-        pos_id = self.get_pos_id(item[text_key], self.max_words_num, self.max_pos_num)
-        position_id = self.get_position_id(pos_id)
-        sample = {ku.pos_id: pos_id, ku.ngram_id: ngram_id, ku.user_id: user_id, ku.pos_order_id: position_id}
-        return sample
+# class ItemLoader():
+#     def __init__(self, data_arr, user2idx, ngram2idx, pos2idx, max_ngram_num,
+#                  max_pos_num, max_words_num ):
+#         self.data_arr = data_arr
+#         self.user2idx = user2idx
+#         self.ngram2idx = ngram2idx
+#         self.pos2idx = pos2idx
+#         self.max_ngram_num = max_ngram_num
+#         self.max_pos_num = max_pos_num
+#         self.max_words_num = max_words_num
+#         self.nlp = spacy.load('en')
+#         self.datahelper = DataHelper()
+#
+#     def get_pos_id(self, text, max_words_num, max_pos_num):
+#         '''
+#         return 一个list的list, 其中每个list 代表一条 syntax path , len: len(tokenize(text))
+#         :param text:
+#         :return:
+#         '''
+#         pos_id = np.zeros((max_words_num, max_pos_num), dtype=np.uint32)
+#         text_pos_list = syntax_tree(self.nlp, text, self.pos2idx)
+#         words_len = len(text_pos_list)
+#         for i in range(pos_id.shape[0]):
+#             if i < words_len:
+#                 word_path = self.datahelper.padding(text_pos_list[i], max_pos_num)
+#             else:
+#                 word_path = [ku.PAD for _ in range(max_pos_num)]
+#             pos_id[i, :] = word_path
+#         return pos_id
+#
+#     def get_position_id(self, pos_id):
+#         position_id = np.zeros((pos_id.shape[0], pos_id.shape[1]), dtype=np.uint32)
+#         for i in range(pos_id.shape[0]):
+#             position_i = [j+1 for j in range(len(pos_id[i, :])) if pos_id[i, j] != ku.PAD]
+#             position_i = self.datahelper.padding(position_i, position_id.shape[1])
+#             position_id[i, :] = position_i
+#         return position_id
+#
+#     def __len__(self):
+#         return len(self.data_arr)
+#
+#     def __getitem__(self, idx):
+#         item = self.data_arr[idx]
+#         user = item[ku.reviewer_ID]
+#         text_key = ku.review_text
+#         text_n_grams = self.datahelper.text2ngramid(item[text_key], self.ngram2idx)
+#         user_id = self.user2idx[user]
+#         ngram_id = self.datahelper.padding(text_n_grams, self.max_ngram_num)
+#         pos_id = self.get_pos_id(item[text_key], self.max_words_num, self.max_pos_num)
+#         position_id = self.get_position_id(pos_id)
+#         sample = {ku.pos_id: pos_id, ku.ngram_id: ngram_id, ku.user_id: user_id, ku.pos_order_id: position_id}
+#         return sample
 
 
 
@@ -288,12 +301,12 @@ class FeatureLoader:
                 ku.pos_order_id: np.array(position_id).flatten().reshape((reviews_num, -1)),
                 ku.user_id: np.array(user_id)}
 
-    def one_hot_encoding(self, ids, num_classes):
-        res = []
-        for id in ids:
-            one_hot_id = to_categorical(id, num_classes=num_classes)
-            res.append(one_hot_id)
-        return np.array(res)
+    # def one_hot_encoding(self, ids, num_classes):
+    #     res = []
+    #     for id in ids:
+    #         one_hot_id = to_categorical(id, num_classes=num_classes)
+    #         res.append(one_hot_id)
+    #     return np.array(res)
 
 
 class ReviewLoader:

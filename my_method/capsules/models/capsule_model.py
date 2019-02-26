@@ -56,25 +56,30 @@ class CapsuleModel(model.Model):
         input_dim=1,
         output_dim=self._hparams.num_prime_capsules,
         layer_name='conv_capsule1',
-        num_routing=1,
-        input_atoms=256,
+        num_routing=3,
+        input_atoms=32,
         output_atoms=8,
-        stride=2,
-        kernel_size=9,
+        stride=1,
+        kernel_size=3,
         padding=self._hparams.padding,
         leaky=self._hparams.leaky,)
+    print('capsule1.shape', capsule1.shape)
     capsule1_atom_last = tf.transpose(capsule1, [0, 1, 3, 4, 2])
+    # print('********capsule1_atom_last.shape: ', capsule1_atom_last.shape) #((?, 16, 25, 25, 4)
     capsule1_3d = tf.reshape(capsule1_atom_last,
-                             [tf.shape(input_tensor)[0], -1, 8])
+                             [tf.shape(input_tensor)[0], -1, 8]) #(? , 10000, 8)
+    # print('*************capsule1_3d.shape************', capsule1_3d.shape)
     _, _, _, height, width = capsule1.get_shape()
-    input_dim = self._hparams.num_prime_capsules * height.value * width.value
+
+    # print('*********height, width********', height.value, width.value) #(25, 25)
+    input_dim = self._hparams.num_prime_capsules * height.value * 1
     return layers.capsule(
         input_tensor=capsule1_3d,
         input_dim=input_dim,
         output_dim=num_classes,
         layer_name='capsule2',
         input_atoms=8,
-        output_atoms=16,
+        output_atoms=8,
         num_routing=self._hparams.routing,
         leaky=self._hparams.leaky,)
 
@@ -131,24 +136,25 @@ class CapsuleModel(model.Model):
     Returns:
       A list of network remakes of the targets.
     """
-    num_pixels = features['depth'] * features['height'] * features['height']
+    # num_pixels = features['depth'] * features['height'] * features['height']
+    num_pixels = features['max_ngram_len']
     remakes = []
-    targets = [(features['recons_label'], features['recons_image'])]
-    if features['num_targets'] == 2:
-      targets.append((features['spare_label'], features['spare_image']))
+    targets = [(features['recons_labels'], features['text'])]
+    # if features['num_targets'] == 2:
+    #   targets.append((features['spare_label'], features['spare_image']))
 
     with tf.name_scope('recons'):
-      for i in range(features['num_targets']):
-        label, image = targets[i]
+      for i in range(1):
+        label, text = targets[i]
         remakes.append(
             layers.reconstruction(
                 capsule_mask=tf.one_hot(label, features['num_classes']),
-                num_atoms=16,
+                num_atoms=4,
                 capsule_embedding=capsule_embedding,
                 layer_sizes=[512, 1024],
                 num_pixels=num_pixels,
                 reuse=(i > 0),
-                image=image,
+                text=text,
                 balance_factor=0.0005))
 
     if self._hparams.verbose:
@@ -156,12 +162,7 @@ class CapsuleModel(model.Model):
 
     return remakes
 
-  def to_np(self, tensor):
-      with tf.Session() as sess:
-          res = sess.run(tensor)
-          return res
-
-  def inference(self, X, num_class, ngram_num):
+  def inference(self, features):
     """Adds the inference graph ops.
 
     Builds the architecture of the neural net to drive logits from features.
@@ -175,44 +176,45 @@ class CapsuleModel(model.Model):
       A model.Inferred named tuple of expected outputs of the model like
       'logits' and 'recons' for the reconstructions.
     """
-
-
-
-
-    # text = tf.reshape(X, [X.shape[0], 1, X.shape[1], 1])
-    # print('X.shape', text.shape)
-    # ReLU Convolution
+    ngram_num, num_classes = features['ngram_num'], features['num_classes']
+    X = features['text']
+    print('******************X.shape*****************', X.shape)
     with tf.variable_scope('ngram_embedding') as scope:
-        ngram_embeddings = tf.get_variable('ngram_embedding', [ngram_num, 100])
+        ngram_embeddings = variables.weight_variable([ngram_num, 100])
         embedding = tf.nn.embedding_lookup(ngram_embeddings, X)
-        print('embedding.shape: ', embedding.shape) #(64, 3500, 300)
+    embedding = tf.reshape(embedding, [-1, 1, embedding.shape[1],
+                                       embedding.shape[2]])
+
     with tf.variable_scope('conv1') as scope:
-      kernel = variables.weight_variable(
-          shape=[3, embedding.shape[2], 1, 256], stddev=5e-2,
-          verbose=self._hparams.verbose)
-      biases = variables.bias_variable([256], verbose=self._hparams.verbose)
-    #
-      embedding = tf.reshape(embedding, [embedding.shape[0], 1,
-                                         embedding.shape[1], embedding.shape[2]])
-      conv1 = tf.nn.conv2d(
+        kernel = variables.weight_variable(
+            shape=[3, embedding.shape[3], 1, 32], stddev=5e-2,
+            verbose=self._hparams.verbose)
+        biases = variables.bias_variable([32], verbose=self._hparams.verbose)
+
+
+        print('***********embedding.shape************', embedding.shape)
+        conv1 = tf.nn.conv2d(
             embedding,
-          kernel, [1, 1, 1, 1],
-          padding=self._hparams.padding,
-          data_format='NCHW')
-      pre_activation = tf.nn.bias_add(conv1, biases, data_format='NCHW')
-      relu1 = tf.nn.relu(pre_activation, name=scope.name)
-      if self._hparams.verbose:
-        tf.summary.histogram('activation', relu1)
+            kernel, [1, 1, 1, embedding.shape[3]],
+            padding=self._hparams.padding,
+            data_format='NCHW')
+        print('*************conv1.shape************', conv1.shape)
+        pre_activation = tf.nn.bias_add(conv1, biases, data_format='NCHW')
+        relu1 = tf.nn.relu(pre_activation, name=scope.name)
+        if self._hparams.verbose:
+            tf.summary.histogram('activation', relu1)
     hidden1 = tf.expand_dims(relu1, 1)
     print('hidden1.shape ', hidden1.shape)
     # Capsules
-    capsule_output = self._build_capsule(hidden1, num_class)
+    capsule_output = self._build_capsule(hidden1, num_classes)
+    print('capsule_output.shape: ',capsule_output.shape)
     logits = tf.norm(capsule_output, axis=-1)
-    #
-    # # Reconstruction
+    print('logits.shape: ', logits.shape)
+    # #
+    # # # Reconstruction
     if self._hparams.remake:
-      remake = self._remake(X, capsule_output)
+        remake = self._remake(features, capsule_output)
     else:
-      remake = None
-    #
+        remake = None
+
     return model.Inferred(logits, remake)

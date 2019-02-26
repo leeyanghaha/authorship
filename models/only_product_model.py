@@ -1,11 +1,13 @@
 from keras.layers import Embedding, Input, Dense, Flatten, Conv2D, \
-    MaxPool2D, Reshape, BatchNormalization, ReLU
+    MaxPool2D, Reshape, BatchNormalization, ReLU, Conv1D
 from keras.models import Model
 import keras
 from keras.utils import to_categorical
 from keras.callbacks import EarlyStopping
 from keras.initializers import Constant
 import numpy as np
+import tensorflow as tf
+
 
 class OnlyProduct:
     def __init__(self, **param):
@@ -19,6 +21,7 @@ class OnlyProduct:
         self.model = self.net()
         self.compile()
 
+
     def net(self):
         product_input = Input(shape=(1,), name='product_input')
         if self.pre_train_embeds is None:
@@ -26,10 +29,28 @@ class OnlyProduct:
         else:
             embeds = Embedding(input_dim=self.product_num, input_length=1, embeddings_initializer=Constant(self.pre_train_embeds),
                                trainable=False, output_dim=300)(product_input)
-        embeds = Flatten()(embeds)
-        out = Dense(self.user_num, activation='softmax')(embeds)
+        embeds = Reshape([embeds.shape[2], 1])(embeds)
+        print('**********embeds.shape*********', embeds.shape)
+        conv1 = Conv1D(30, kernel_size=(5), activation='relu', padding='valid')(embeds)
+        conv1 = Reshape([conv1.shape[1], 1, conv1.shape[2]])(conv1)
+
+        print('***********conv1.shape**********', conv1.shape)
+        primary_capsules = 4
+        capsule_dim = 8
+        # capsule_conv1 = Conv2D(primary_capsules * capsule_dim, kernel_size=(3), activation='relu',
+        #                        )(conv1)
+        # print('************capsule_conv1.shape**********', capsule_conv1.shape)
+        # capsule_conv1_reshaped = Reshape([capsule_conv1.shape[1] * capsule_conv1.shape[2] * primary_capsules,
+        #                                                     capsule_dim])(capsule_conv1)
+
+        # print('************capsule_conv1_reshaped************', capsule_conv1_reshaped.shape)
+
+        conv1 = Flatten()(conv1)
+        print('***********flatten.shape********', conv1.shape)
+        out = Dense(self.user_num, activation='softmax')(conv1)
 
         model = Model(inputs=product_input, outputs=out)
+
         model.summary()
         return model
 

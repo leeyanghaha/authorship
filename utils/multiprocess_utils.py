@@ -1,5 +1,7 @@
 import math
 import multiprocessing as mp
+
+
 class Multiprocess:
     def __init__(self, process_num=10):
         self.process_num = process_num

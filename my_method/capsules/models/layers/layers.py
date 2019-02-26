@@ -56,8 +56,8 @@ def _leaky_routing(logits, output_dim):
   Args:
     logits: The original logits. shape is
       [input_capsule_num, output_capsule_num] if fully connected. Otherwise, it
-      has two more dimensions.
-    output_dim: The number of units in the second dimension of logits.
+      has two more dimmensions.
+    output_dim: The number of units in the second dimmension of logits.
 
   Returns:
     Routing probabilities for each pair of capsules. Same shape as logits.
@@ -103,22 +103,36 @@ def _update_routing(votes, biases, logit_shape, num_dims, input_dim, output_dim,
 
   def _body(i, logits, activations):
     """Routing while loop."""
-    # route: [batch, input_dim, output_dim, ...]
+    # route: [batch, input_dim, output_dim, height, width]
     if leaky:
       route = _leaky_routing(logits, output_dim)
     else:
       route = tf.nn.softmax(logits, dim=2)
+    print('num_dims: {}, route.shape: {}, votes_trans.shape: {}'.format(num_dims, route.shape,
+                                                                        votes_trans.shape))
+    # preactivate_unrolled: (out_atoms, batch, input_dim, out_dim, height, width)
     preactivate_unrolled = route * votes_trans
+    print('preactivate_unrolled.shape: ', preactivate_unrolled.shape)
+    # preact_trans: (batch, input_dim, output_dim, out_atoms, height, width)
     preact_trans = tf.transpose(preactivate_unrolled, r_t_shape)
+    print('preact_trans.shape: ', preact_trans.shape)
     preactivate = tf.reduce_sum(preact_trans, axis=1) + biases
+    print('preactivate.shape: ', preactivate.shape)
     activation = _squash(preactivate)
+    # activation: (batch, out_dim, out_atoms, height, width)
+    print('activation.shape: ', activation.shape)
     activations = activations.write(i, activation)
     # distances: [batch, input_dim, output_dim]
     act_3d = tf.expand_dims(activation, 1)
+    print('act_3d.shape: ', act_3d.shape)
     tile_shape = np.ones(num_dims, dtype=np.int32).tolist()
     tile_shape[1] = input_dim
     act_replicated = tf.tile(act_3d, tile_shape)
+    print('act_replicated.shape: ', act_replicated.shape)
+    #distances: (batch, input_dim, out_dim, height, width)
     distances = tf.reduce_sum(votes * act_replicated, axis=3)
+    print('')
+    print('logits.shape: {} distances.shape: {}'.format(logits.shape, distances.shape))
     logits += distances
     return (i + 1, logits, activations)
 
@@ -139,8 +153,8 @@ def capsule(input_tensor,
             input_dim,
             output_dim,
             layer_name,
-            input_atoms=8,
-            output_atoms=8,
+            input_atoms=4,
+            output_atoms=4,
             **routing_args):
   """Builds a fully connected capsule layer.
 
@@ -182,9 +196,14 @@ def capsule(input_tensor,
       input_tiled = tf.tile(
           tf.expand_dims(input_tensor, -1),
           [1, 1, 1, output_dim * output_atoms])
+      print('*********input_tensor*******', input_tensor.shape)
+      print('*********input_tiled******', input_tiled.shape)
+      print('*********weigths********', weights.shape)
       votes = tf.reduce_sum(input_tiled * weights, axis=2)
+      print('votes.shape: ', votes.shape)
       votes_reshaped = tf.reshape(votes,
                                   [-1, input_dim, output_dim, output_atoms])
+      print('******votes_reshaped**********', votes_reshaped.shape)
     with tf.name_scope('routing'):
       input_shape = tf.shape(input_tensor)
       logit_shape = tf.stack([input_shape[0], input_dim, output_dim])
@@ -243,24 +262,26 @@ def _depthwise_conv3d(input_tensor,
     input_tensor_reshaped = tf.reshape(input_tensor, [
         input_shape[0] * input_dim, input_atoms, input_shape[3], input_shape[4]
     ])
-
     input_tensor_reshaped.set_shape((None, input_atoms, in_height.value,
                                      in_width.value))
+    print('input_tensor_reshaped: ', input_tensor_reshaped.shape)
     conv = tf.nn.conv2d(
         input_tensor_reshaped,
         kernel,
         [1, 1, stride, stride],
         padding=padding,
         data_format='NCHW')
+    print('***********conv.shape**********', conv.shape)
     conv_shape = tf.shape(conv)
     _, _, conv_height, conv_width = conv.get_shape()
     # Reshape back to 6D by splitting first dimmension to batch and input_dim
     # and splitting second dimmension to output_dim and output_atoms.
 
     conv_reshaped = tf.reshape(conv, [
-        input_shape[0], input_dim, output_dim, output_atoms, conv_shape[2],
-        conv_shape[3]
+        input_shape[0], input_dim, output_dim, output_atoms, conv.shape[2],
+        conv.shape[3]
     ])
+    print('*************conv_reshaped.shape************', conv_reshaped.shape)
     conv_reshaped.set_shape((None, input_dim, output_dim, output_atoms,
                              conv_height.value, conv_width.value))
     return conv_reshaped, conv_shape, input_shape
@@ -294,7 +315,7 @@ def conv_slim_capsule(input_tensor,
   with num_routing=1, input_dim=1 and input_atoms=conv_channels.
 
   Args:
-    input_tensor: tensor, of rank 5. Last two dimensions representing height
+    input_tensor: tensor, of rank 5. Last two dimmensions representing height
       and width position grid.
     input_dim: scalar, number of capsules in the layer below.
     output_dim: scalar, number of capsules in this layer.
@@ -315,13 +336,13 @@ def conv_slim_capsule(input_tensor,
   """
   with tf.variable_scope(layer_name):
     kernel = variables.weight_variable(shape=[
-        kernel_size, 3500, input_atoms, output_dim * output_atoms
+        kernel_size, input_tensor.shape[4], input_atoms, output_dim * output_atoms
     ])
     biases = variables.bias_variable([output_dim, output_atoms, 1, 1])
     votes, votes_shape, input_shape = _depthwise_conv3d(
         input_tensor, kernel, input_dim, output_dim, input_atoms, output_atoms,
         stride, padding)
-
+    print('********votes.shape*********', votes.shape)
     with tf.name_scope('routing'):
       logit_shape = tf.stack([
           input_shape[0], input_dim, output_dim, votes_shape[2], votes_shape[3]
@@ -363,7 +384,7 @@ def _margin_loss(labels, raw_logits, margin=0.4, downweight=0.5):
   return 0.5 * positive_cost + downweight * 0.5 * negative_cost
 
 
-def evaluate(logits, labels, scope, loss_type, num_classes):
+def evaluate(logits, labels, num_targets, scope, loss_type):
   """Calculates total loss and performance metrics like accuracy.
 
   Args:
@@ -381,15 +402,12 @@ def evaluate(logits, labels, scope, loss_type, num_classes):
   Raises:
     NotImplementedError: if the loss_type is not softmax or margin loss.
   """
-  import keras
-  labels = keras.utils.to_categorical(labels, num_classes)
-  labels = tf.convert_to_tensor(labels)
   with tf.name_scope('loss'):
     if loss_type == 'sigmoid':
       classification_loss = tf.nn.sigmoid_cross_entropy_with_logits(
           labels=labels / 2.0, logits=logits)
     elif loss_type == 'softmax':
-      classification_loss = tf.nn.softmax_cross_entropy_with_logits(
+      classification_loss = tf.nn.softmax_cross_entropy_with_logits_v2(
           labels=labels, logits=logits)
     elif loss_type == 'margin':
       classification_loss = _margin_loss(labels=labels, raw_logits=logits)
@@ -399,7 +417,7 @@ def evaluate(logits, labels, scope, loss_type, num_classes):
     with tf.name_scope('total'):
       batch_classification_loss = tf.reduce_mean(classification_loss)
       tf.add_to_collection('losses', batch_classification_loss)
-      tf.summary.scalar('batch_classification_cost', batch_classification_loss)
+  tf.summary.scalar('batch_classification_cost', batch_classification_loss)
 
   all_losses = tf.get_collection('losses', scope)
   total_loss = tf.add_n(all_losses, name='total_loss')
@@ -407,8 +425,9 @@ def evaluate(logits, labels, scope, loss_type, num_classes):
 
   with tf.name_scope('accuracy'):
     with tf.name_scope('correct_prediction'):
-      _, targets = tf.nn.top_k(labels, k=1)
-      _, predictions = tf.nn.top_k(logits, k=1)
+      print('*********labels.shape*****', labels.shape)
+      _, targets = tf.nn.top_k(labels, k=1) # targets.shape = (?, 1)
+      _, predictions = tf.nn.top_k(logits, k=1) # predictions.shape = (?, 1)
       missed_targets = tf.contrib.metrics.set_difference(targets, predictions)
       num_missed_targets = tf.contrib.metrics.set_size(missed_targets)
       correct = tf.equal(num_missed_targets, 0)
@@ -420,11 +439,11 @@ def evaluate(logits, labels, scope, loss_type, num_classes):
   tf.summary.scalar('accuracy', accuracy)
   tf.summary.scalar('correct_prediction_batch', correct_sum)
   tf.summary.scalar('almost_correct_batch', almost_correct_sum)
-  return total_loss, correct_sum, almost_correct_sum
+  return total_loss, correct_sum, almost_correct_sum, accuracy, targets, predictions
 
 
 def reconstruction(capsule_mask, num_atoms, capsule_embedding, layer_sizes,
-                   num_pixels, reuse, image, balance_factor):
+                   num_pixels, reuse, text, balance_factor):
   """Adds the reconstruction loss and calculates the reconstructed image.
 
   Given the last capsule output layer as input of shape [batch, 10, num_atoms]
@@ -465,7 +484,8 @@ def reconstruction(capsule_mask, num_atoms, capsule_embedding, layer_sizes,
       biases_initializer=tf.constant_initializer(0.1))
 
   with tf.name_scope('loss'):
-    image_2d = tf.contrib.layers.flatten(image)
+    image_2d = tf.contrib.layers.flatten(text)
+    image_2d = tf.cast(image_2d, tf.float32)
     distance = tf.pow(reconstruction_2d - image_2d, 2)
     loss = tf.reduce_sum(distance, axis=-1)
     batch_loss = tf.reduce_mean(loss)

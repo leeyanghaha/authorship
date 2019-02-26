@@ -15,6 +15,9 @@
 
 """Framework for training and evaluating models."""
 
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 import os
 import sys
@@ -24,8 +27,8 @@ import numpy as np
 import tensorflow as tf
 
 
-from my_method.capsules.input_data.cifar10 import cifar10_input
-from my_method.capsules.input_data.mnist import mnist_input_record
+from input_data.cifar10 import cifar10_input
+from input_data.mnist import mnist_input_record
 from input_data.norb import norb_input_record
 from models import capsule_model
 from models import conv_model

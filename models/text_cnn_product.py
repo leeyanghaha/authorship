@@ -90,6 +90,7 @@ class TextCNNPro:
 
 
         concat = keras.layers.concatenate([max_pool1, max_pool2, max_pool3, product_embeds])
+
         concat = self.flatten(concat)
         concat = Dropout(0.5)(concat)
         concat = Dense(500)(concat)
@@ -101,6 +102,47 @@ class TextCNNPro:
         self.loss = self.default_loss
         model = Model(inputs=[text_input, product_input], outputs=out)
         return model
+
+    def net2(self):
+        text_input = Input(shape=(self.max_ngram_len,), name='text_input')
+        product_input = Input(shape=(1,), name='product_input')
+        text_embeds = self.ngram_embeds(text_input)
+        text_embeds = Reshape((text_embeds.shape[1], text_embeds.shape[2], 1))(text_embeds)
+        if self.pre_trained_embeds is None:
+            self.product_embeds = Embedding(input_dim=self.product_num, output_dim=self.embedding_dim,
+                                            input_length=1, name='product_embedding')
+        else:
+            self.product_embeds = Embedding(input_dim=self.product_num, input_length=1,
+                                            embeddings_initializer=Constant(self.pre_trained_embeds),
+                                            trainable=True, output_dim=self.embedding_dim,
+                                            name='product_embedding')
+        product_embeds = self.product_embeds(product_input)
+
+        conv1 = Conv2D(self.feature_num, (self.kernel_size[0], self.embedding_dim), padding='valid')(text_embeds)
+        conv1 = BatchNormalization()(conv1)
+        conv1 = ReLU()(conv1)
+        max_pool1 = MaxPool2D((conv1.shape[1], 1))(conv1)
+
+        conv2 = Conv2D(self.feature_num, (self.kernel_size[1], self.embedding_dim), padding='valid')(text_embeds)
+        conv2 = BatchNormalization()(conv2)
+        conv2 = ReLU()(conv2)
+        max_pool2 = MaxPool2D((conv2.shape[1], 1))(conv2)
+
+        conv3 = Conv2D(self.feature_num, (self.kernel_size[2], self.embedding_dim), padding='valid')(text_embeds)
+        conv3 = BatchNormalization()(conv3)
+        conv3 = ReLU()(conv3)
+        max_pool3 = MaxPool2D((conv3.shape[1], 1))(conv3)
+
+        max_pool1 = self.slicing_lambda(max_pool1)
+        max_pool2 = self.slicing_lambda(max_pool2)
+        max_pool3 = self.slicing_lambda(max_pool3)
+        product_embeds = Reshape((1, 1, product_embeds.shape[2]))(product_embeds)
+        product_model = self.slicing_lambda(product_embeds)
+
+        text_model = keras.layers.concatenate([max_pool1, max_pool2, max_pool3])
+
+        text_product_model = keras.layers.concatenate([max_pool1, max_pool2, max_pool3, product_model])
+
 
     def net2(self):
         # 2 个 embedding, later fusion, KL loss added.

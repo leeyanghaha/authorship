@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="yangl@58.198.177.46:22">
+  <component name="PublishConfigData" autoUpload="Always" serverName="gpu-1080Ti">
     <serverData>
-      <paths name="AIDA-1080Ti">
+      <paths name="gpu-1080Ti">
         <serverdata>
           <mappings>
             <mapping deploy="/home/yangl/research/authorship/code" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="CPU">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/nfs/yangl/research/authorship/code" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="yangl@58.198.177.46:22">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/yangl/research/authorship/code" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

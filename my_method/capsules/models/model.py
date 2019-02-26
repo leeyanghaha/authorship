@@ -35,9 +35,11 @@ import tensorflow as tf
 from my_method.capsules.models.layers import layers
 
 TowerResult = collections.namedtuple('TowerResult', ('inferred', 'almost',
-                                                     'correct', 'grads'))
+                                                     'correct', 'grads', 'losses', 'acc',
+                                                     'targets', 'predictions'))
 JoinedResult = collections.namedtuple('JoinedResult', ('summary', 'train_op',
-                                                       'correct', 'almost'))
+                                                       'correct', 'almost', 'losses', 'acc',
+                                                       'targets', 'predictions'))
 Inferred = collections.namedtuple('Inferred',
                                   ('logits', 'remakes'))
 
@@ -54,23 +56,24 @@ class Model(object):
       hparams: The hyperparameters for the model as tf.contrib.training.HParams.
     """
     self._hparams = hparams
-    with tf.device('/cpu:0'):
-      self._global_step = tf.get_variable(
+    # with tf.device('/cpu:0'):
+    self._global_step = tf.get_variable(
           'global_step', [],
           initializer=tf.constant_initializer(0),
-          trainable=False)
+          trainable=False,
+          )
 
-      learning_rate = tf.train.exponential_decay(
+    learning_rate = tf.train.exponential_decay(
           learning_rate=hparams.learning_rate,
           global_step=self._global_step,
           decay_steps=hparams.decay_steps,
           decay_rate=hparams.decay_rate)
-      learning_rate = tf.maximum(learning_rate, 1e-6)
+    learning_rate = tf.maximum(learning_rate, 1e-6)
 
-      self._optimizer = tf.train.AdamOptimizer(learning_rate)
+    self._optimizer = tf.train.AdamOptimizer(learning_rate)
 
   @abc.abstractmethod
-  def inference(self, X, num_classes, ngram_num):
+  def inference(self, features):
     """Adds the inference graph ops.
 
     Builds the architecture of the neural net to derive logits from features.
@@ -85,7 +88,7 @@ class Model(object):
     """
     raise NotImplementedError('Not implemented')
 
-  def _single_tower(self, tower_ind, X, Y, num_classes, ngram_num):
+  def _single_tower(self, tower_ind, feature):
     """Calculates the model gradient for one tower.
 
     Adds the inference and loss operations to the graph. Calculates the
@@ -100,20 +103,20 @@ class Model(object):
       A namedtuple TowerResult containing the inferred values like logits and
       reconstructions, gradients and evaluation metrics.
     """
-
-    with tf.name_scope('tower_%d' % (tower_ind)) as scope:
-        inferred = self.inference(X, num_classes, ngram_num)
-        print('**********inferred.logits', inferred.logits.shape)
-        losses, correct, almost= layers.evaluate(
+    with tf.device('/gpu:%d' % tower_ind):
+      with tf.name_scope('tower_%d' % (tower_ind)) as scope:
+        inferred = self.inference(feature)
+        print('inferred.logits.shape: ', inferred.logits.shape)
+        losses, correct, almost, accuracy, targets, predictions = layers.evaluate(
             logits=inferred.logits,
-            num_classes = num_classes,
-            labels=Y,
+            labels=feature['labels'],
+            num_targets=1,
             scope=scope,
             loss_type=self._hparams.loss_type,)
         tf.get_variable_scope().reuse_variables()
         grads = self._optimizer.compute_gradients(losses)
-        #
-    return TowerResult(inferred, almost, correct, grads)
+    #
+    return TowerResult(inferred, almost, correct, grads ,losses, accuracy, targets, predictions)
 
   def _average_gradients(self, tower_grads):
     """Calculate the average gradient for each variable across all towers.
@@ -129,13 +132,12 @@ class Model(object):
     for grads_and_vars in zip(*tower_grads):
       grads = tf.stack([g for g, _ in grads_and_vars])
       grad = tf.reduce_mean(grads, 0)
-
       v = grads_and_vars[0][1]
       grad_and_var = (grad, v)
       average_grads.append(grad_and_var)
     return average_grads
 
-  def _summarize_towers(self, almosts, corrects, tower_grads):
+  def _summarize_towers(self, almosts, corrects, tower_grads, losses, acc, targets, predictions):
     """Aggregates the results and gradients over all towers.
 
     Args:
@@ -154,11 +156,16 @@ class Model(object):
     summary = tf.summary.merge(summaries)
     stacked_corrects = tf.stack(corrects)
     stacked_almosts = tf.stack(almosts)
+    stacked_losses = tf.stack(losses)
+    stacked_acc = tf.stack(acc)
     summed_corrects = tf.reduce_sum(stacked_corrects, 0)
     summed_almosts = tf.reduce_sum(stacked_almosts, 0)
-    return JoinedResult(summary, train_op, summed_corrects, summed_almosts)
+    summed_losses = tf.reduce_sum(stacked_losses, 0)
+    summed_acc = tf.reduce_sum(stacked_acc, 0)
+    return JoinedResult(summary, train_op, summed_corrects, summed_almosts, summed_losses, summed_acc,
+                        targets, predictions)
 
-  def multi_gpu(self, X, Y, gpu_names, num_class, ngram_num):
+  def multi_gpu(self, features, num_gpus):
     """Build the Graph and add the train ops on multiple GPUs.
 
     Divides the inference and gradient computation on multiple gpus.
@@ -177,13 +184,22 @@ class Model(object):
     corrects = []
     tower_grads = []
     inferred = []
+    losses = []
+    acc = []
+    targets = []
+    predictions = []
     with tf.variable_scope(tf.get_variable_scope()):
-      for i in range(len(gpu_names)):
-        tower_output = self._single_tower(i, X, Y, num_class, ngram_num)
+      for i in range(num_gpus):
+        tower_output = self._single_tower(i, features[i])
         inferred.append(tower_output.inferred)
         almosts.append(tower_output.almost)
         corrects.append(tower_output.correct)
         tower_grads.append(tower_output.grads)
-
-    summarized_results = self._summarize_towers(almosts, corrects, tower_grads)
+        losses.append(tower_output.losses)
+        acc.append(tower_output.acc)
+        targets.append(tower_output.targets)
+        predictions.append(tower_output.predictions)
+    summarized_results = self._summarize_towers(almosts, corrects, tower_grads, losses, acc,
+                                                targets, predictions)
     return summarized_results, inferred
+

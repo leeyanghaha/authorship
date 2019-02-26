@@ -23,14 +23,14 @@ embedding_dim = 300
 node2vec_param = {'path_length': 10, 'num_paths': 10, 'dim': embedding_dim,
                   'workers': 8, 'p': 0.6, 'q': 0.5, 'dw': False}
 
-em.node2vec_train(reviews, product2idx, node2vec_param)
-product_embedding = em.load_node2vec_embedding(ku.products_embeds, len(product2idx), embedding_dim)
+# em.node2vec_train(reviews, product2idx, node2vec_param)
+# product_embedding = em.load_node2vec_embedding(ku.products_embeds, len(product2idx), embedding_dim)
 
 
 x, y = dp.load_feature_label(reviews, products_id)
 #
 params = {'batch_size': 16, 'embedding_dim': embedding_dim, 'user_num': len(user2idx),
-          'product_num': len(product2idx), 'pre_train_embeds': product_embedding}
+          'product_num': len(product2idx), 'pre_train_embeds': None}
 
 training_split = int(0.8 * x.shape[0])
 training_x, training_y = x[:training_split], y[:training_split]
