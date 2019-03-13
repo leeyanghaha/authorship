@@ -9,7 +9,7 @@ def get_reviews():
 
 reviews = get_reviews()
 # reviews = ReviewLoader(ku.Movie, product_num=50).get_data()
-review_info = ReviewInfo(reviews, max_len=500, min_threshold=0)
+review_info = ReviewInfo(reviews, max_len=500, min_threshold=0, feature_name='word')
 
 num_classes = review_info.num_classes
 vocab_size = review_info.vocab_size

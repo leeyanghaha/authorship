@@ -4,17 +4,10 @@ from utils.data_utils import ReviewLoader
 import utils.key_utils as ku
 from torch.utils.data import DataLoader
 from my_method.my_capsule.models.net import CapsuleModel as cpm
-from my_method.my_capsule.models.gram_ai_capsule import CapsuleNet
-from my_method.my_capsule.models.net import Test
 import torch
 import torch.optim as optim
 import torch.nn as nn
 import utils.function_utils as fu
-
-
-# time.initialize('retrieval data:')
-# reviews = ReviewLoader(ku.Movie, product_num=50).get_data()
-# time.consumed('retrieval data:')
 
 
 def get_reviews():
@@ -23,16 +16,7 @@ def get_reviews():
     return reviews
 
 
-class HyperParam:
-    def __init__(self):
-        self.embedding_dim = 300
-        self.padding = 0
-        self.num_routing = 3
-        self.leaky = False
-
-
 def train(epochs=50):
-
     model.to(device)
     for epoch in range(epochs):
         correct = 0
@@ -96,7 +80,6 @@ if __name__ == '__main__':
     valid_loader = DataLoader(valid_set, batch_size=32, shuffle=True, num_workers=5)
     test_loader = DataLoader(test_set, batch_size=32, shuffle=False, num_workers=5)
 
-    hyparam = HyperParam()
     device_ids = [0, 1]
     device = torch.device('cuda:0')
     # model = Test(vocab_size, num_classes)
