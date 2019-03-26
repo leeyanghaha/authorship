@@ -15,7 +15,7 @@ max_ngram_len = 500
 voca = Vocabulary(ku.voca_root)
 userhelper = UserHelper()
 
-reviews  = ReviewLoader(ku.Movie, product_num=50).get_data()
+reviews = ReviewLoader(ku.Movie, product_num=50).get_data()
 
 
 users = userhelper.get_users(reviews)
@@ -27,7 +27,7 @@ feature_loader = FeatureLoader(**data_params)
 
 
 param = {'kernel_size': [3, 5, 7], 'batch_size': 32, 'epochs': 100, 'loss': 'categorical_crossentropy',
- 'embedding_dim': 100, 'user_num': len(user2idx), 'max_ngram_len': max_ngram_len,  'feature_num':300 ,
+ 'embedding_dim': 100, 'user_num': len(user2idx), 'max_ngram_len': max_ngram_len,  'feature_num': 300 ,
          'vocab_size': len(ngram2idx)}
 #
 #

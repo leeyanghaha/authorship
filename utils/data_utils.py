@@ -68,11 +68,7 @@ class UserHelper:
         return fu.load_array(path)[0]
 
 
-
-
-
 class DataHelper:
-
     def get_text(self, data):
         text = []
         key = ku.review_text
@@ -85,7 +81,6 @@ class DataHelper:
         for review in reviews:
             asin.append(review[ku.asin])
         return asin
-
 
     def _get_max_character_n_gram_len(self, *reviews):
         ngram = Ngram()
@@ -237,8 +232,8 @@ class FeatureLoader:
         self._check_params(**params)
 
     def _check_params(self, **params):
-        if ku.ngram2idx in params:
-            self.ngram2idx = params[ku.ngram2idx]
+        if ku.feature2idx in params:
+            self.feature2idx = params[ku.feature2idx]
         if ku.user2idx in params:
             self.user2idx = params[ku.user2idx]
         if 'pos2idx' in params:
@@ -264,22 +259,22 @@ class FeatureLoader:
     def load_n_gram_binary_feature_label(self, data_arr, sparse_tag=True):
         text_list, y = self.load_labeled_data(data_arr)
         sample_num = len(text_list)
-        clo = len(self.ngram2idx)
+        clo = len(self.feature2idx)
         x = np.zeros((sample_num, clo + 1), dtype=bool)
         for idx, text in enumerate(text_list):
-            text_ngram_id = self.datahelper.text2ngramid(text, self.ngram2idx)
+            text_ngram_id = self.datahelper.text2ngramid(text, self.feature2idx)
             for i in range(len(text_ngram_id)):
                 x[idx, int(text_ngram_id[i])] = True
         if sparse_tag:
             x = sparse.csr_matrix(x)
         return x, np.array(y)
 
-    def load_n_gram_idx_feature_label(self, data_arr):
+    def load_n_gram_idx_feature_label(self, data_arr, padding):
         text_list, y = self.load_labeled_data(data_arr)
         sample_num = len(text_list)
         x = np.zeros((sample_num, self.max_ngram_len), dtype=np.int32)
         for idx, text in enumerate(text_list):
-            text_ngram_id = self.datahelper.text2ngramid(text, self.ngram2idx, padding=True, max_len=self.max_ngram_len)
+            text_ngram_id = self.datahelper.text2ngramid(text, self.feature2idx, padding=padding, max_len=self.max_ngram_len)
             x[idx, :] = text_ngram_id
         return x, np.array(y)
 

@@ -14,7 +14,7 @@ class TextCNN:
         self.check_input_error(**kwargs)
         self.ngram_embeds = Embedding(input_dim=self.vocab_size, output_dim=self.embedding_dim,
                                       input_length=self.max_ngram_len)
-        self.slicing_lambda = Lambda(lambda x:x[:])
+        self.slicing_lambda = Lambda(lambda x: x[:])
         self.flatten = Flatten()
         self.model = self.net()
         self.compile()
@@ -35,7 +35,6 @@ class TextCNN:
         input = Input(shape=(self.max_ngram_len, ))
         embeds = self.ngram_embeds(input)
         embeds = Reshape((embeds.shape[1], embeds.shape[2], 1))(embeds) #Conv2d 需要channel值
-
 
         conv1 = Conv2D(self.feature_num, (self.kernel_size[0], self.embedding_dim), padding='valid')(embeds)
         conv1 = BatchNormalization()(conv1)

@@ -1,5 +1,6 @@
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import cross_validate
 import utils.key_utils as ku
 import os
 from sklearn.externals import joblib
@@ -34,6 +35,11 @@ class Svm:
         else:
             joblib.dump(self.clf, path)
             print('save {} at {}.'.format(model_name, path))
+
+    def cv(self, test_x, test_y):
+        cv_results = cross_validate(self.clf, test_x, test_y, cv=3, scoring='accuracy')
+        return cv_results['test_score']
+
 
 def load(model_name):
     path = os.path.join(ku.model_root, model_name)

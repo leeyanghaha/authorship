@@ -61,7 +61,7 @@ def listchildren(dir, concat=True):
 def dump_array(tw_array, file):
     with open(file, 'a') as f:
         for tw in tw_array:
-             f.write(json.dumps(tw) + '\n')
+             f.write(json.dumps(tw, ensure_ascii=False) + '\n')
 
 
 def get_suffix(file):

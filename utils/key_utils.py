@@ -69,8 +69,18 @@ twitter = 'twitter'
 # parameter field
 user2idx = 'user2idx'
 ngram2idx = 'ngram2idx'
+feature2idx = 'feature2idx'
 pos2idx = 'pos2idx'
 max_ngram_len = 'max_ngram_len'
 max_pos_num = 'max_pos_num'
 max_words_num = 'max_words_num'
 
+# method
+
+bert = 'bert-classifier'
+rf = 'random_forest'
+lda = 'LDA'
+svm = 'SVM'
+cnn = 'non-pretrained-cnn'
+bert_product = 'bert-product'
+experiment_method = {bert, rf, lda, svm, cnn}

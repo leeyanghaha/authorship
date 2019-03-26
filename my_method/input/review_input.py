@@ -42,6 +42,33 @@ class ReviewInfo:
         raise NotImplementedError('Not Implemented')
 
 
+class SvmInfo(ReviewInfo):
+    def __init__(self, reviews, feature_name='n-gram'):
+        super(SvmInfo, self).__init__(reviews)
+        self.feature_name = feature_name
+        self.vocab = Vocabulary(ku.voca_root)
+        self.x, self.users = self.feature_label()
+
+    def feature2idx(self, min_threshold):
+        if self.feature_name == 'n-gram':
+            feature2idx = self.vocab.character_n_gram_table(self.reviews, min_threshold=6)
+        else:
+            feature2idx = self.vocab.word_table(self.reviews, min_threshold=6)
+        return feature2idx
+
+    def feature_label(self):
+        feature2idx = self.feature2idx(None)
+        params = {'feature2idx': feature2idx, 'user2idx': self.user2idx}
+        feature_loader = FeatureLoader(**params)
+        x, users = feature_loader.load_n_gram_binary_feature_label(self.reviews)
+        return x, users
+
+
+class RfInfo(SvmInfo):
+    def __init__(self, reviews, feature_name='n-gram'):
+        super(RfInfo, self).__init__(reviews, feature_name=feature_name)
+
+
 class PreTrainedInfo(ReviewInfo):
     def __init__(self, reviews,
                  feature_file,
@@ -97,6 +124,41 @@ class PreTrainedInfo(ReviewInfo):
         return np.array(x), np.array(users), np.array(products)
 
 
+    # def pad(self, sentence_embedding, max_len, hidden_size):
+    #     real_len = sentence_embedding.shape[0]
+    #     if real_len < max_len:
+    #         pad = np.array([[0.0] * hidden_size] * (max_len - real_len))
+    #         sentence_embedding = np.concatenate([sentence_embedding, pad], axis=0)
+    #     return sentence_embedding
+    #
+    #
+    #
+    # def feature_label(self):
+    #     lines = fu.load_array(self.feature_file)
+    #     users = []
+    #     products = []
+    #     x = []
+    #     for line in lines:
+    #         user = line['user']
+    #         product = line['product']
+    #         sentence_embedding = []
+    #         for feature in line['features']:
+    #             token, layers = feature['token'], feature['layers']
+    #             for layer in layers:
+    #                 if layer['index'] == -1:
+    #                     sentence_embedding.append(layer['values'])
+    #         sentence_embedding = self.pad(np.array(sentence_embedding), 100, hidden_size=768)
+    #         print('sentence.size: ', sentence_embedding.shape)
+    #         x.append(sentence_embedding)
+    #         users.append(self.user2idx[user])
+    #         products.append(self.product2idx[product])
+    #     return np.array(x), np.array(users), np.array(products)
+
+
+    # def get_review_text(self):
+    #     datahelper = DataHelper()
+    #     return datahelper.get_text(self.reviews)
+
 class NonPreTrainedInfo(ReviewInfo):
     def __init__(self, reviews,
                  min_threshold=6,
@@ -108,7 +170,9 @@ class NonPreTrainedInfo(ReviewInfo):
         self.feature = feature_name
         self.max_seq_len = max_seq_len
         self.vocab = Vocabulary(ku.voca_root)
+        self.feature2idx = self.feature2idx(min_threshold)
         self.x, self.users = self.feature_label()
+        self.vocab_size = len(self.feature2idx)
         self.products = self.get_products()
 
     def feature2idx(self, min_threshold):
@@ -121,10 +185,9 @@ class NonPreTrainedInfo(ReviewInfo):
         return feature2idx
 
     def feature_label(self):
-        feature2idx = self.feature2idx(self.min_threshold)
-        data_params = {'max_ngram_len': self.max_seq_len, 'user2idx': self.user2idx, 'ngram2idx': feature2idx}
+        data_params = {'max_ngram_len': self.max_seq_len, 'user2idx': self.user2idx, 'feature2idx': self.feature2idx}
         feature_loader = FeatureLoader(**data_params)
-        x, y = feature_loader.load_n_gram_idx_feature_label(self.reviews)
+        x, y = feature_loader.load_n_gram_idx_feature_label(self.reviews, padding=True)
         return x, y
 
     def get_products(self):
@@ -143,19 +206,19 @@ class ReviewDataSet(Dataset):
         self.text, self.users, self.products = self.split_feature_label()
 
     def split_feature_label(self):
-        train_split = int(self.x.shape[0] * 0.8)
-        valid_split = train_split - int(train_split * 0.2)
+        train_split = int(self.x.shape[0] * 0.6)
+        valid_split = train_split + int(self.x.shape[0] * 0.2)
         if self.split == 'train':
-            x = self.x[: valid_split]
-            users, products = self.users[: valid_split], self.product[: valid_split]
+            x = self.x[: train_split]
+            users, products = self.users[: train_split], self.product[: train_split]
         elif self.split == 'valid':
-            x = self.x[valid_split: train_split]
-            users, products = self.users[valid_split: train_split], self.product[valid_split: train_split]
+            x = self.x[train_split: valid_split]
+            users, products = self.users[train_split: valid_split], self.product[train_split: valid_split]
         else:
-            x = self.x[train_split:]
-            users, products = self.users[train_split:], self.product[train_split:]
-        return torch.tensor(x, dtype=torch.float), torch.tensor(users, dtype=torch.long), \
-               torch.tensor(products, dtype=torch.long)
+            x = self.x[valid_split:]
+            users, products = self.users[valid_split:], self.product[valid_split:]
+        x = torch.tensor(x, dtype=torch.float) if len(x.shape) > 2 else torch.tensor(x, dtype=torch.long)
+        return x, torch.tensor(users, dtype=torch.long), torch.tensor(products, dtype=torch.long)
 
     def __len__(self):
         return len(self.text)
@@ -169,34 +232,41 @@ class ReviewDataSet(Dataset):
 
 class Input:
     def __init__(self, reviews,
-                 pretrained,
-                 batch_size,
-                 shuffle,
+                 method,
+                 batch_size=None,
+                 shuffle=None,
                  **param):
         self.reviews = reviews
-        self.pretrained = pretrained
+        self.method = method
         self.batch_size = batch_size
         self.shuffle = shuffle
         self.info = self.get_info(**param)
-        self.train_loader, self.valid_loader, self.test_loader = self.get_dataloader()
+        if method == ku.cnn or method == ku.bert:
+            self.train_loader, self.valid_loader, self.test_loader = self.get_dataloader()
 
     def get_info(self, **param):
         '''
         :param param: if pretrained: param = {'feature_file', 'bert_vocab', 'max_seq_len', 'feature_dim'}
         :return: if not pretrained: param = {'min_threshold', 'feature_name', 'max_seq_len'}
         '''
-        if self.pretrained:
+        if self.method == ku.bert:
             info = PreTrainedInfo(reviews=self.reviews,
                                   feature_file=param['feature_file'],
                                   feature_dim=param['feature_dim'],
                                   max_seq_len=param['max_seq_len'],
                                   bert_vocab=param['bert_vocab'])
 
-        else:
+        elif self.method == ku.cnn:
             info = NonPreTrainedInfo(reviews=self.reviews,
                                      min_threshold=param['min_threshold'],
                                      feature_name=param['feature_name'],
                                      max_seq_len=param['max_seq_len'])
+        elif self.method == ku.svm:
+            info = SvmInfo(reviews=self.reviews)
+        elif self.method == ku.rf:
+            info = RfInfo(reviews=self.reviews)
+        else:
+            raise NotImplementedError('{} not implemented'.format(self.method))
         return info
 
     def get_dataloader(self):
@@ -207,7 +277,6 @@ class Input:
         train_loader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=self.shuffle, num_workers=5)
         valid_loader = DataLoader(valid_dataset, batch_size=self.batch_size, shuffle=self.shuffle, num_workers=5)
         test_loader = DataLoader(test_dataset, batch_size=self.batch_size, shuffle=self.shuffle, num_workers=5)
-
         return train_loader, valid_loader, test_loader
 
 

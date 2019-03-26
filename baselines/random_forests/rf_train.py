@@ -2,6 +2,7 @@ from utils.vocabulary_utils import Vocabulary
 import utils.key_utils as ku
 import utils.data_utils as du
 import sklearn.utils as sku
+import utils.function_utils as fu
 import baselines.random_forests.data_process as dp
 from sklearn.ensemble import RandomForestClassifier as RFC
 from sklearn.metrics import accuracy_score
@@ -13,7 +14,12 @@ voca = Vocabulary(ku.voca_root)
 userhelper = du.UserHelper()
 
 
-reviews  = du.ReviewLoader(ku.Movie, product_num=100).get_data()
+def get_reviews():
+    file = '/home/leeyang/research/data/Movie.json'
+    return fu.load_array(file)
+
+reviews = get_reviews()
+# reviews  = du.ReviewLoader(ku.Movie, product_num=100).get_data()
 users = userhelper.get_users(reviews)
 
 
@@ -21,17 +27,15 @@ user2idx = userhelper.user2idx(users)
 ngram2idx = voca.character_n_gram_table(reviews, min_threshold=2)
 # voca.dump_n_grams(ngram2idx, type=ku.charngram2idx)
 
-grid_params= {'n_estimators': [1000], 'criterion': ['gini'], 'max_depth': [100],
-            'min_samples_split': [3],
-         'min_samples_leaf': [1], 'max_features': ['sqrt'], 'max_leaf_nodes': [None],
-         'min_impurity_decrease': [0.], 'random_state': [1]}
+grid_params = {'n_estimators': [1000], 'criterion': ['gini', 'entropy'], 'max_depth': [None],
+            'min_samples_split': [2],
+         'min_samples_leaf': [1], 'max_features': ['sqrt', 'auto', 'log2'], 'max_leaf_nodes': [None],
+         'min_impurity_decrease': [0., .2], 'random_state': [1]}
 rf_params = {'n_jobs': 10, 'verbose': 0, 'warm_start': False}
 
 rfc = RFC(**rf_params)
 
-
-gs_param = {'scoring': 'accuracy', 'param_grid': grid_params, 'estimator': rfc, 'cv':10, }
-
+gs_param = {'scoring': 'accuracy', 'param_grid': grid_params, 'estimator': rfc, 'cv': 10}
 
 
 epoch = 1

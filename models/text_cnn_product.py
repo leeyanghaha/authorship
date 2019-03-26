@@ -14,13 +14,14 @@ from sklearn.metrics import accuracy_score
 from keras.callbacks import TensorBoard
 from keras.initializers import Constant
 
+
 class TextCNNPro:
     def __init__(self, **kwargs):
         self.check_input_error(**kwargs)
 
         self.ngram_embeds = Embedding(input_dim=self.vocab_size, output_dim=self.embedding_dim,
                                       input_length=self.max_ngram_len)
-        self.slicing_lambda = Lambda(lambda x:x[:])
+        self.slicing_lambda = Lambda(lambda x: x[:])
         self.flatten = Flatten()
         self.default_loss = 'categorical_crossentropy'
         if self.method == 1:

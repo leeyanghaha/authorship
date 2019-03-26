@@ -19,22 +19,27 @@ logger = logging.getLogger(__name__)
 
 def get_reviews():
     file = '/home/leeyang/research/data/Movie.json'
+    # file = '/home/leeyang/research/data/twitter/training_bert'
     return fu.load_array(file)
 
 
 class InputExample(object):
 
-    def __init__(self, unique_id, text_a, text_b):
+    def __init__(self, unique_id, text_a, text_b, user, product):
         self.unique_id = unique_id
         self.text_a = text_a
         self.text_b = text_b
+        self.user = user
+        self.product = product
 
 
 class InputFeatures(object):
     """A single set of features of data."""
 
-    def __init__(self, unique_id, tokens, input_ids, input_mask, input_type_ids):
+    def __init__(self, unique_id, user, product, tokens, input_ids, input_mask, input_type_ids):
         self.unique_id = unique_id
+        self.user = user
+        self.product = product
         self.tokens = tokens
         self.input_ids = input_ids
         self.input_mask = input_mask
@@ -47,11 +52,9 @@ def convert_examples_to_features(examples, seq_length, tokenizer):
     features = []
     for (ex_index, example) in enumerate(examples):
         tokens_a = tokenizer.tokenize(example.text_a)
-
         tokens_b = None
         if example.text_b:
             tokens_b = tokenizer.tokenize(example.text_b)
-
         if tokens_b:
             # Modifies `tokens_a` and `tokens_b` in place so that the total
             # length is less than the specified length.
@@ -125,6 +128,8 @@ def convert_examples_to_features(examples, seq_length, tokenizer):
         features.append(
             InputFeatures(
                 unique_id=example.unique_id,
+                user=example.user,
+                product=example.product,
                 tokens=tokens,
                 input_ids=input_ids,
                 input_mask=input_mask,
@@ -153,15 +158,17 @@ def read_examples(reviews):
     examples = []
     for idx, review in enumerate(reviews):
         line = review[ku.review_text]
+        user = review[ku.reviewer_ID]
+        product = review[ku.asin]
         line = line.strip()
-        examples.append(InputExample(unique_id=idx+1, text_a=line, text_b=None))
+        examples.append(InputExample(unique_id=idx+1, text_a=line, text_b=None, user=user, product=product))
     return examples
 
 
 def main():
-    output_file = '/home/leeyang/research/model/feature.json'
+    output_file = '/home/leeyang/research/model/Movie_feature.json'
     bert_model = '/home/leeyang/research/model/bert/bert-base-uncased'
-    layers = '-1,-2'
+    layers = '-1'
     max_seq_len = 100
     batch_size = 32
     device = torch.device('cuda:0')
@@ -204,6 +211,8 @@ def main():
                 # feature = unique_id_to_feature[unique_id]
                 output_json = collections.OrderedDict()
                 output_json["linex_index"] = unique_id
+                output_json['user'] = feature.user
+                output_json['product'] = feature.product
                 all_out_features = []
                 for (i, token) in enumerate(feature.tokens):
                     all_layers = []

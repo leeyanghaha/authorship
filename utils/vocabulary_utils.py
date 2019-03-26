@@ -35,6 +35,7 @@ class Vocabulary(object):
 
     def counter_character_n_grams(self, *reviews):
         text_array = self.data_helper.get_text(reviews)
+        # text_array = reviews
         counter = Counter()
         for text in text_array:
             ngrams = self.ngram.character_level(text)
@@ -50,7 +51,8 @@ class Vocabulary(object):
         return counter
 
     def counter_word_n_gram(self, *reviews):
-        text_array = self.data_helper.get_text(reviews)
+        # text_array = self.data_helper.get_text(reviews)
+        text_array = reviews
         counter = Counter()
         for text in text_array:
             if len(text) > 0:
@@ -108,8 +110,8 @@ class Vocabulary(object):
         return word2idx
 
     def word_n_gram_table(self, reviews, min_threshold, start):
-        # counter = self.multi_counter_word_n_grams(reviews)
-        counter = self.counter_word_n_gram(reviews)
+        counter = self.multi_counter_word_n_grams(reviews)
+        # counter = self.counter_word_n_gram(reviews)
         n_grams_count = self.remove_rare(counter, min_threshold)
         n_gram2idx = dict()
         for idx, n_gram in enumerate(n_grams_count):
