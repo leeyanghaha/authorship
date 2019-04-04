@@ -241,8 +241,9 @@ class Input:
         self.batch_size = batch_size
         self.shuffle = shuffle
         self.info = self.get_info(**param)
-        if method == ku.cnn or method == ku.bert:
+        if method == ku.cnn or method == ku.bert or method == ku.lstm or method == ku.only_product:
             self.train_loader, self.valid_loader, self.test_loader = self.get_dataloader()
+
 
     def get_info(self, **param):
         '''
@@ -256,7 +257,7 @@ class Input:
                                   max_seq_len=param['max_seq_len'],
                                   bert_vocab=param['bert_vocab'])
 
-        elif self.method == ku.cnn:
+        elif self.method == ku.cnn or self.method == ku.lstm or self.method == ku.only_product:
             info = NonPreTrainedInfo(reviews=self.reviews,
                                      min_threshold=param['min_threshold'],
                                      feature_name=param['feature_name'],
@@ -265,6 +266,7 @@ class Input:
             info = SvmInfo(reviews=self.reviews)
         elif self.method == ku.rf:
             info = RfInfo(reviews=self.reviews)
+
         else:
             raise NotImplementedError('{} not implemented'.format(self.method))
         return info

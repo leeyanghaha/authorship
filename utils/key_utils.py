@@ -79,8 +79,9 @@ max_words_num = 'max_words_num'
 
 bert = 'bert-classifier'
 rf = 'random_forest'
-lda = 'LDA'
+lstm = 'lstm'
 svm = 'SVM'
 cnn = 'non-pretrained-cnn'
 bert_product = 'bert-product'
-experiment_method = {bert, rf, lda, svm, cnn}
+only_product = 'only-product'
+experiment_method = {bert, rf, lstm, svm, cnn, only_product}

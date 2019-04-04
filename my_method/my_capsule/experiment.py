@@ -13,6 +13,7 @@ class Experiment:
         self.criterion = criterion
         self.optimizer = optimizer
         self.use_product = False
+        self.only_product = False
 
     def basic_run(self, train_loader, valid_loader, test_loader):
         self.model.to(self.device)
@@ -30,6 +31,8 @@ class Experiment:
                 self.optimizer.zero_grad()
                 if self.use_product:
                     output = self.model(texts, products)
+                elif self.only_product:
+                    output = self.model(products)
                 else:
                     output = self.model(texts)
                 loss = self.criterion(output, labels)
@@ -51,16 +54,17 @@ class Experiment:
         correct = 0
         total = 0
         losses = 0
-        self.model.eval()
+        # self.model.eval()
         with torch.no_grad():
             for i, review in enumerate(loader):
                 texts = review['text'].cuda()
                 labels = review['user'].cuda()
                 if 'product' in review:
                     products = review['product'].cuda()
-                # torch.save(products, '/home/leeyang/research/model/imi/product_label/{}/{}.pt'.format(split, i))
                 if self.use_product:
                     outputs = self.model(texts, products)
+                elif self.only_product:
+                    outputs = self.model(products)
                 else:
                     outputs = self.model(texts)
                 _, predict = torch.max(outputs.data, 1)

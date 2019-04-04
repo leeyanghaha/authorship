@@ -2,7 +2,8 @@ from my_method.input.review_input import Input, ReviewDataSet
 import utils.function_utils as fu
 import utils.key_utils as ku
 from torch.utils.data import DataLoader
-from my_method.my_capsule.models.net import BertCNN, TextCNN, BertProduct
+from my_method.my_capsule.models.net import BertCNN, TextCNN, BertProduct, Lstm, \
+    DecisionEmbeddingFusion, FeatureFusion, OnlyProduct
 import torch
 import torch.optim as optim
 from my_method.my_capsule.experiment import Experiment, SvmClassifier, RandomForestsClassifier
@@ -21,7 +22,7 @@ class ExperimentWrapper:
         self.criterion = torch.nn.CrossEntropyLoss()
 
     def get_reviews(self):
-        file = '/home/leeyang/research/data/Movie.json'
+        file = '/home/leeyang/research/data/CD.json'
         return shuffle(fu.load_array(file))
 
     def run(self):
@@ -39,6 +40,12 @@ class ExperimentWrapper:
             inputs = Input(self.reviews, method=self.method, pretrained=False, batch_size=32, shuffle=True, **params)
             model = TextCNN(inputs.info.vocab_size, embedding_dim=300, user_num=inputs.info.user_num)
 
+        elif self.method == ku.only_product:
+            use_cuda = True
+            params = {'min_threshold': 6, 'max_seq_len': 3500, 'feature_name': 'n-gram'}
+            inputs = Input(self.reviews, method=self.method, pretrained=False, batch_size=32, shuffle=True, **params)
+            model = OnlyProduct(inputs.info.user_num, inputs.info.product_num, embedding_dim=300)
+
         elif self.method == ku.bert:
             use_cuda = True
             bert_vocab = '/home/leeyang/research/model/bert/vocab.txt'
@@ -53,7 +60,10 @@ class ExperimentWrapper:
             feature_file = '/home/leeyang/research/model/feature_last_300.json'
             params = {'feature_file': feature_file, 'feature_dim': 300, 'max_seq_len': 1500, 'bert_vocab': bert_vocab}
             inputs = Input(self.reviews, method=ku.bert, pretrained=True, batch_size=32, shuffle=True, **params)
-            model = BertProduct(embedding_dim=300, user_num=inputs.info.user_num, product_num=inputs.info.product_num)
+            # model = BertProduct(embedding_dim=300, user_num=inputs.info.user_num, product_num=inputs.info.product_num)
+            # model = DecisionEmbeddingFusion(embedding_dim=300, user_num=inputs.info.user_num, product_num=inputs.info.product_num)
+            # model = FeatureFusion(embedding_dim=300, user_num=inputs.info.user_num, product_num=inputs.info.product_num)
+            # model = OnlyProduct(inputs.info.user_num, inputs.info.product_num, embedding_dim=300)
 
         elif self.method == ku.rf:
             grid_params = {'n_estimators': [5000], 'criterion': ['gini'],
@@ -66,8 +76,11 @@ class ExperimentWrapper:
             experiment = RandomForestsClassifier(inputs, **params)
             experiment.run()
 
-        elif self.method == ku.lda:
-            pass
+        elif self.method == ku.lstm:
+            use_cuda = True
+            params = {'min_threshold': 6, 'max_seq_len': 1500, 'feature_name': 'n-gram'}
+            inputs = Input(self.reviews, method=self.method, pretrained=False, batch_size=32, shuffle=True, **params)
+            model = Lstm(inputs.info.vocab_size, 300)
 
         else:
             raise NotImplementedError('{} not implemented'.format(self.method))
@@ -75,9 +88,11 @@ class ExperimentWrapper:
         if use_cuda:
             model = torch.nn.DataParallel(model, device_ids=[0, 1])
             optimizer = optim.Adam(model.parameters(), lr=0.00085)
-            experiment = Experiment(model, self.device, self.criterion, optimizer, epochs=70)
+            experiment = Experiment(model, self.device, self.criterion, optimizer, epochs=50)
             if self.method == ku.bert_product:
                 experiment.use_product = True
+            elif self.method == ku.only_product:
+                experiment.only_product = True
             train_loader, valid_loader, test_loader = inputs.train_loader, inputs.valid_loader, inputs.test_loader
             experiment.basic_run(train_loader, valid_loader, test_loader)
 
@@ -108,7 +123,7 @@ class ExperimentWrapper:
 if __name__ == '__main__':
     # train_loader, valid_loader, test_loader = inputs.train_loader, inputs.valid_loader, inputs.test_loader
     # experiment.run_experiment(train_loader, valid_loader, test_loader)
-    exp = ExperimentWrapper(method=ku.rf)
+    exp = ExperimentWrapper(method=ku.svm)
     exp.run()
 
 

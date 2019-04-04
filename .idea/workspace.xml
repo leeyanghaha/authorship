@@ -5,29 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbe0c411-b9e2-487f-963a-e8c2ade95d1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/baselines/AA_of_MM/experiment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/baselines/AA_of_MM/input.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/job_prediction/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/job_prediction/job_input.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/job_prediction/job_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/AA_of_MM/AA_of_MMtrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/AA_of_MM/SVM_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/CNN_AST/keras_CNN_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baselines/random_forests/rf_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/baselines/random_forests/rf_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/svm_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/svm_classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/text_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/text_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/text_cnn_product.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/text_cnn_product.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_method/bert/extract_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/bert/extract_features.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_method/bert/feature_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/bert/feature_process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_method/graft.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/graft.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_method/input/review_input.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/input/review_input.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_method/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_method/my_capsule/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/my_capsule/experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_method/my_capsule/models/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_method/my_capsule/models/net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/data_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/function_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/function_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/key_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/key_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/vocabulary_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/vocabulary_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +20,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/authorship$capsule_train.coverage" NAME="capsule_train Coverage Results" MODIFIED="1547885747242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/cnn_capsule" />
-    <SUITE FILE_PATH="coverage/authorship$extract_features.coverage" NAME="extract_features Coverage Results" MODIFIED="1553507367136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/bert" />
+    <SUITE FILE_PATH="coverage/authorship$extract_features.coverage" NAME="extract_features Coverage Results" MODIFIED="1554360054308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/bert" />
     <SUITE FILE_PATH="coverage/authorship$lda_graft.coverage" NAME="lda_graft Coverage Results" MODIFIED="1543548633928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/LDAH_S" />
     <SUITE FILE_PATH="coverage/authorship$my_experiment.coverage" NAME="my_experiment Coverage Results" MODIFIED="1547354947532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/capsules" />
     <SUITE FILE_PATH="coverage/authorship$n_grams.coverage" NAME="n_grams Coverage Results" MODIFIED="1542266621295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
@@ -76,7 +59,7 @@
     <SUITE FILE_PATH="coverage/authorship$review_input_record.coverage" NAME="review_input_record Coverage Results" MODIFIED="1547033827827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/capsules/input_data/review" />
     <SUITE FILE_PATH="coverage/authorship$debug.coverage" NAME="debug Coverage Results" MODIFIED="1550658588166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method/my_capsule" />
     <SUITE FILE_PATH="coverage/authorship$job_input.coverage" NAME="job_input Coverage Results" MODIFIED="1552899052472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/job_prediction" />
-    <SUITE FILE_PATH="coverage/authorship$main.coverage" NAME="main Coverage Results" MODIFIED="1553566412139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
+    <SUITE FILE_PATH="coverage/authorship$main.coverage" NAME="main Coverage Results" MODIFIED="1554359672376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_method" />
     <SUITE FILE_PATH="coverage/authorship$vocabulary.coverage" NAME="vocabulary Coverage Results" MODIFIED="1542270792581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/AA_of_MM" />
     <SUITE FILE_PATH="coverage/authorship$keras_model.coverage" NAME="keras_model Coverage Results" MODIFIED="1543206873997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/baselines/CNN_AST" />
   </component>
@@ -85,13 +68,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_method/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="157">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_method/bert/extract_features.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="233" lean-forward="true" selection-start-line="233" selection-end-line="233" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/n_grams.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="79" column="24" lean-forward="true" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+            <state relative-caret-position="2380">
+              <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -109,8 +116,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_method/my_capsule/models/net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+            <state relative-caret-position="7168">
+              <caret line="260" column="46" selection-start-line="260" selection-start-column="46" selection-end-line="260" selection-end-column="46" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -119,10 +126,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_method/my_capsule/models/gram_ai_capsule.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2044">
+              <caret line="73" selection-start-line="73" selection-end-line="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_method/input/review_input.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-148">
-              <caret line="193" column="21" lean-forward="true" selection-start-line="193" selection-start-column="21" selection-end-line="193" selection-end-column="21" />
+            <state relative-caret-position="6552">
+              <caret line="243" column="98" selection-start-line="243" selection-start-column="98" selection-end-line="243" selection-end-column="98" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -133,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/SVM_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+            <state relative-caret-position="1176">
+              <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -143,22 +159,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/svm_classifier.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_method/my_capsule/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1492">
-              <caret line="34" column="53" lean-forward="true" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+            <state relative-caret-position="1484">
+              <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -169,31 +173,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="63" column="49" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="49" />
+            <state relative-caret-position="1120">
+              <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselines/random_forests/data_process.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/data_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="944">
-              <caret line="276" column="74" selection-start-line="276" selection-start-column="74" selection-end-line="276" selection-end-column="74" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -302,15 +285,15 @@
         <option value="$USER_HOME$/anaconda3/lib/python3.7/site-packages/pytorch_pretrained_bert/modeling.py" />
         <option value="$PROJECT_DIR$/my_method/bert/extract_features.py" />
         <option value="$PROJECT_DIR$/utils/data_utils.py" />
-        <option value="$PROJECT_DIR$/my_method/input/review_input.py" />
-        <option value="$PROJECT_DIR$/utils/key_utils.py" />
         <option value="$PROJECT_DIR$/my_method/my_capsule/models/net.py" />
+        <option value="$PROJECT_DIR$/utils/key_utils.py" />
+        <option value="$PROJECT_DIR$/my_method/input/review_input.py" />
         <option value="$PROJECT_DIR$/my_method/my_capsule/experiment.py" />
         <option value="$PROJECT_DIR$/my_method/main.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="240" />
     <option name="y" value="112" />
     <option name="width" value="1440" />
@@ -324,7 +307,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -381,6 +363,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -408,7 +391,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.extract_features">
     <configuration name="SVM_main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="authorship" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -501,6 +484,9 @@
       <module name="authorship" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/my_method" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -571,8 +557,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.extract_features" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.graft" />
         <item itemvalue="Python.SVM_main" />
         <item itemvalue="Python.feature_process" />
@@ -624,12 +610,15 @@
       <workItem from="1553164877661" duration="3225000" />
       <workItem from="1553168390406" duration="13326000" />
       <workItem from="1553499394143" duration="1078000" />
-      <workItem from="1553500480993" duration="22213000" />
+      <workItem from="1553500480993" duration="35827000" />
+      <workItem from="1554168330095" duration="12987000" />
+      <workItem from="1554195958130" duration="1256000" />
+      <workItem from="1554359541816" duration="2316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="341449000" />
+    <option name="totallyTimeSpent" value="371622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -642,14 +631,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.14850427" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49800265" visible="true" weight="0.15331197" />
       <window_info id="Structure" order="1" sideWeight="0.5019531" side_tool="true" weight="0.18442933" />
       <window_info id="Favorites" order="2" sideWeight="0.50199735" side_tool="true" weight="0.14255014" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32576618" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49252138" weight="0.30079454" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49252138" visible="true" weight="0.30079454" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39500567" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -719,24 +707,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/baselines/capsule_text_clf/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/trying/my_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/baselines/capsule_text_clf/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4256">
@@ -864,13 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/torch/nn/modules/linear.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
@@ -1017,16 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/bert/extract_features.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/job_prediction/job_input.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
@@ -1074,16 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/input/review_input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
-          <caret line="193" column="21" lean-forward="true" selection-start-line="193" selection-start-column="21" selection-end-line="193" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/concurrent/futures/_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -1091,37 +1034,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/torch/nn/modules/linear.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="79" column="24" lean-forward="true" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+        <state relative-caret-position="448">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
+    <entry file="file://$PROJECT_DIR$/my_method/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="63" column="49" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="49" />
+        <state relative-caret-position="157">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#61#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/n_grams.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/key_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_method/my_capsule/models/net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+        <state relative-caret-position="7168">
+          <caret line="260" column="46" selection-start-line="260" selection-start-column="46" selection-end-line="260" selection-end-column="46" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/my_capsule/experiment.py">
+    <entry file="file://$PROJECT_DIR$/my_method/my_capsule/models/gram_ai_capsule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1492">
-          <caret line="34" column="53" lean-forward="true" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+        <state relative-caret-position="2044">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/input/review_input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6552">
+          <caret line="243" column="98" selection-start-line="243" selection-start-column="98" selection-end-line="243" selection-end-column="98" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -1130,20 +1097,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/baselines/AA_of_MM/SVM_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+        <state relative-caret-position="1176">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_method/main.py">
+    <entry file="file://$PROJECT_DIR$/my_method/my_capsule/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="1484">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
           <folding>
-            <element signature="e#0#61#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baselines/random_forests/rf_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1120">
+          <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_method/bert/extract_features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="233" lean-forward="true" selection-start-line="233" selection-end-line="233" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
