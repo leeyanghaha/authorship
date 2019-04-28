@@ -48,13 +48,15 @@ class Experiment:
                 self.valid(valid_loader)
         print('train finished.')
         print('testing......')
-        self.valid(test_loader)
+        test_acc = self.valid(test_loader)
+        with open('/home/leeyang/results', 'a') as f:
+            print('acc %.3f' % test_acc, file=f)
 
     def valid(self, loader):
         correct = 0
         total = 0
         losses = 0
-        # self.model.eval()
+        self.model.eval()
         with torch.no_grad():
             for i, review in enumerate(loader):
                 texts = review['text'].cuda()
@@ -73,6 +75,7 @@ class Experiment:
                 correct += (predict == labels).sum().item()
         print('loss: %.3f acc: %.3f' % (losses / len(loader), (correct / total)),
               'correct: {}/{}'.format(correct, total))
+        return correct / total
 
 
 class BertClassifier(Experiment):

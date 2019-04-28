@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_reviews():
-    file = '/home/leeyang/research/data/Movie.json'
+    file = '/home/leeyang/research/data/CD.json'
     # file = '/home/leeyang/research/data/twitter/training_bert'
     return fu.load_array(file)
 
@@ -166,7 +166,7 @@ def read_examples(reviews):
 
 
 def main():
-    output_file = '/home/leeyang/research/model/Movie_feature.json'
+    output_file = '/home/leeyang/research/model/CD_feature.json'
     bert_model = '/home/leeyang/research/model/bert/bert-base-uncased'
     layers = '-1'
     max_seq_len = 100

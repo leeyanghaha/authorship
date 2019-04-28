@@ -42,16 +42,15 @@ class UserHelper:
         else:
             return users[:sample_num]
 
-    def count_user_number(self, data):
+    def count_number(self, data, key):
         counter = Counter()
-        key = ku.reviewer_ID
         for item in data:
             user = item[key]
             counter.update([user])
         return counter
 
     def get_users(self, data, sample=None):
-        user_counter = self.count_user_number(data)
+        user_counter = self.count_number(data, key=ku.reviewer_ID)
         users = np.array(list(user_counter.keys()))
         if sample:
             users = self.sample_user(users, sample)
@@ -60,7 +59,7 @@ class UserHelper:
     def user2idx(self, users):
         res = {}
         for idx, user in enumerate(set(users)):
-            res.update({user:idx})
+            res.update({user: idx})
         return res
 
     def pos2idx(self):
@@ -135,97 +134,6 @@ class DataHelper:
         return np.array(res)
 
 
-
-def syntax(root, syntax_path, root_holder):
-    if len(list(root.children)) == 0:
-        return
-    else:
-        for child in root.children:
-            child_holder = SyntaxPathHolder(child)
-            child_holder.path.extend(root_holder.path + [child.pos_])
-            syntax_path.append(child_holder)
-            if len(list(child.children)) > 0:
-                root_holder = child_holder
-            syntax(child, syntax_path, root_holder)
-        return syntax_path
-
-
-def syntax_tree(nlp, text, pos2idx):
-    doc = nlp(text)
-    pos_id = []
-    for sentence in list(doc.sents):
-        syntax_path = []
-        root = sentence.root
-        root_holder = SyntaxPathHolder(root)
-        root_holder.path.append(root.pos_)
-        syntax_path = syntax(root, syntax_path, root_holder)
-        if syntax_path is not None:
-            for word_path in syntax_path:
-                temp = []
-                for pos in word_path.path:
-                    if pos in pos2idx:
-                        temp.append(pos2idx[pos])
-                    else:
-                        temp.append(pos2idx[ku.UNK])
-                pos_id.append(temp)
-    return pos_id
-
-
-# class ItemLoader():
-#     def __init__(self, data_arr, user2idx, ngram2idx, pos2idx, max_ngram_num,
-#                  max_pos_num, max_words_num ):
-#         self.data_arr = data_arr
-#         self.user2idx = user2idx
-#         self.ngram2idx = ngram2idx
-#         self.pos2idx = pos2idx
-#         self.max_ngram_num = max_ngram_num
-#         self.max_pos_num = max_pos_num
-#         self.max_words_num = max_words_num
-#         self.nlp = spacy.load('en')
-#         self.datahelper = DataHelper()
-#
-#     def get_pos_id(self, text, max_words_num, max_pos_num):
-#         '''
-#         return 一个list的list, 其中每个list 代表一条 syntax path , len: len(tokenize(text))
-#         :param text:
-#         :return:
-#         '''
-#         pos_id = np.zeros((max_words_num, max_pos_num), dtype=np.uint32)
-#         text_pos_list = syntax_tree(self.nlp, text, self.pos2idx)
-#         words_len = len(text_pos_list)
-#         for i in range(pos_id.shape[0]):
-#             if i < words_len:
-#                 word_path = self.datahelper.padding(text_pos_list[i], max_pos_num)
-#             else:
-#                 word_path = [ku.PAD for _ in range(max_pos_num)]
-#             pos_id[i, :] = word_path
-#         return pos_id
-#
-#     def get_position_id(self, pos_id):
-#         position_id = np.zeros((pos_id.shape[0], pos_id.shape[1]), dtype=np.uint32)
-#         for i in range(pos_id.shape[0]):
-#             position_i = [j+1 for j in range(len(pos_id[i, :])) if pos_id[i, j] != ku.PAD]
-#             position_i = self.datahelper.padding(position_i, position_id.shape[1])
-#             position_id[i, :] = position_i
-#         return position_id
-#
-#     def __len__(self):
-#         return len(self.data_arr)
-#
-#     def __getitem__(self, idx):
-#         item = self.data_arr[idx]
-#         user = item[ku.reviewer_ID]
-#         text_key = ku.review_text
-#         text_n_grams = self.datahelper.text2ngramid(item[text_key], self.ngram2idx)
-#         user_id = self.user2idx[user]
-#         ngram_id = self.datahelper.padding(text_n_grams, self.max_ngram_num)
-#         pos_id = self.get_pos_id(item[text_key], self.max_words_num, self.max_pos_num)
-#         position_id = self.get_position_id(pos_id)
-#         sample = {ku.pos_id: pos_id, ku.ngram_id: ngram_id, ku.user_id: user_id, ku.pos_order_id: position_id}
-#         return sample
-
-
-
 class FeatureLoader:
     def __init__(self, **params):
         self.datahelper = DataHelper()
@@ -278,30 +186,21 @@ class FeatureLoader:
             x[idx, :] = text_ngram_id
         return x, np.array(y)
 
-    def syntax_cnn_feature_label(self, data_arr):
-        torch_data_loader = ItemLoader(data_arr, self.user2idx, self.ngram2idx, self.pos2idx,
-                                       self.max_ngram_len, self.max_pos_num, self.max_words_num)
-        ngram_id = []
-        pos_id = []
-        position_id = []
-        user_id = []
-        reviews_num = len(torch_data_loader)
-        for item in torch_data_loader:
-            ngram_id.append(item[ku.ngram_id])
-            pos_id.append(item[ku.pos_id])
-            position_id.append(item[ku.pos_order_id])
-            user_id.append(item[ku.user_id])
-        return {ku.ngram_id: np.array(ngram_id),
-                ku.pos_id: np.array(pos_id).flatten().reshape((reviews_num, -1)),
-                ku.pos_order_id: np.array(position_id).flatten().reshape((reviews_num, -1)),
-                ku.user_id: np.array(user_id)}
 
-    # def one_hot_encoding(self, ids, num_classes):
-    #     res = []
-    #     for id in ids:
-    #         one_hot_id = to_categorical(id, num_classes=num_classes)
-    #         res.append(one_hot_id)
-    #     return np.array(res)
+def show_message(reviews):
+    userhelper = UserHelper()
+    datahelper = DataHelper()
+    users = userhelper.get_users(reviews)
+    products = datahelper.get_products(reviews)
+    len_users = len(set(list(users)))
+    products_num = len(set(list(products)))
+    len_reviews = len(reviews)
+
+    print('每条 product 有 {:.2f} 条 reviews '.format(len_reviews / products_num))
+    print('users num', len_users)
+    print('每个 user 有 {:.2f} reviews'.format(len_reviews / len_users))
+    print('products num: ', products_num)
+    print('共有 {} 条 reviews.'.format(len_reviews))
 
 
 class ReviewLoader:
@@ -332,15 +231,7 @@ class ReviewLoader:
         reviews = []
         for i in result:
             reviews.extend(result[i])
-        users = self.userhelper.get_users(reviews)
-        len_users = len(set(list(users)))
-        len_reviews = len(reviews)
-
-        print('每条 product 有 {:.2f} 条 reviews '.format(len_reviews / self.product_num))
-        print('users num', len_users)
-        print('每个 user 有 {:.2f} reviews'.format(len_reviews / len_users))
-        print('products num: ', self.product_num)
-        print('共有 {} 条 reviews.'.format(len_reviews))
+        show_message(reviews)
         return reviews
 
     def get_data(self):
@@ -400,6 +291,19 @@ class ReviewLoader:
         for product in products:
             res.append(product2idx[product])
         return np.array(res)
+
+
+def get_users_data(reviews, num_users):
+    userhelper = UserHelper()
+    user_counter = userhelper.count_number(reviews, key=ku.reviewer_ID)
+    users = user_counter.most_common(num_users)
+    users_set = set(item[0] for item in users)
+    res = []
+    for review in reviews:
+        if review[ku.reviewer_ID] in users_set:
+            res.append(review)
+    show_message(res)
+    return res
 
 
 

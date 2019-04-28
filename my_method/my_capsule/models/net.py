@@ -60,8 +60,8 @@ class TextCNN(nn.Module):
         self.conv3 = nn.Conv2d(1, 300, (7, embedding_dim))
         self.linear = nn.Linear(3 * 300, user_num)
         self.dropout1 = nn.Dropout(0.3)
-        self.dropout2 = nn.Dropout(0.3)
-        self.dropout3 = nn.Dropout(0.3)
+        self.dropout2 = nn.Dropout(0.5)
+        self.dropout3 = nn.Dropout(0.8)
 
     @staticmethod
     def num_flat_features(x):
